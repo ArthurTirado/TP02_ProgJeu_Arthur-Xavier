@@ -1,0 +1,33 @@
+﻿  stdafx.cpp
+  AnimatedGameObject.cpp
+  Animation.cpp
+  AnimationFrame.cpp
+  CyclicAnimation.cpp
+  game.cpp
+C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\game.cpp(149,3): warning C4065: switch statement contains 'default' but no 'case' labels
+  GameObject.cpp
+  InputBasedAnimation.cpp
+  Inputs.cpp
+  LinearAnimation.cpp
+  Publisher.cpp
+  Scene.cpp
+  TitleScene.cpp
+  Generating Code...
+  Game.vcxproj -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Game.lib
+  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\Fonts\Level01\emulogic.ttf -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\Fonts\Level01\emulogic.ttf
+  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\Music\Title\SkyFire (Title Screen).ogg -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\Music\Title\SkyFire (Title Screen).ogg
+  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\SoundFX\Level01\bomb.wav -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\SoundFX\Level01\bomb.wav
+  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\SoundFX\Level01\bossSpawning.wav -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\SoundFX\Level01\bossSpawning.wav
+  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\SoundFX\Level01\enemyGun.wav -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\SoundFX\Level01\enemyGun.wav
+  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\SoundFX\Level01\enemyKilled.wav -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\SoundFX\Level01\enemyKilled.wav
+  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\SoundFX\Level01\gunBonus.wav -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\SoundFX\Level01\gunBonus.wav
+  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\SoundFX\Level01\healthBonus.wav -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\SoundFX\Level01\healthBonus.wav
+  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\SoundFX\Level01\iceball.wav -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\SoundFX\Level01\iceball.wav
+  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\SoundFX\Level01\info.txt -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\SoundFX\Level01\info.txt
+  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\SoundFX\Level01\playerGun.wav -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\SoundFX\Level01\playerGun.wav
+  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\Sprites\Level01\NES - The Guardian Legend - Bosses.bmp -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\Sprites\Level01\NES - The Guardian Legend - Bosses.bmp
+  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\Sprites\Level01\NES - The Guardian Legend - Miscellaneous.bmp -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\Sprites\Level01\NES - The Guardian Legend - Miscellaneous.bmp
+  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\Sprites\Level01\NES - The Guardian Legend - The Guardian Alyssa.bmp -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\Sprites\Level01\NES - The Guardian Legend - The Guardian Alyssa.bmp
+  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\Sprites\Level01\SpaceBackground.png -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\Sprites\Level01\SpaceBackground.png
+  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\Sprites\Title\Title.png -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\Sprites\Title\Title.png
+  16 File(s) copied
