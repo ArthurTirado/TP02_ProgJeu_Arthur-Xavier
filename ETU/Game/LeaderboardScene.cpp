@@ -2,6 +2,7 @@
 #include "LeaderboardScene.h"
 #include <fstream>
 #include <iostream>
+#include <locale>
 
 LeaderboardScene::LeaderboardScene(SceneType type)
 	: Scene(type)
@@ -34,13 +35,11 @@ bool LeaderboardScene::handleEvents(sf::RenderWindow& window)
             window.close();
             retval = true;
         }
-        // Met le text dans la string
         if (nameEntered.getString().getSize() < 3) {
             std::cin >> nameEnteredStr;
             removeNonAlphabeticalChars(nameEnteredStr);
             nameEntered.setString(nameEnteredStr);
         }
-        // Retour en arriere
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) && !nameEntered.getString().isEmpty()) {
             nameEntered.setString(nameEntered.getString().getSize() - 1);
         }
@@ -54,6 +53,8 @@ bool LeaderboardScene::handleEvents(sf::RenderWindow& window)
             }
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && enterHasBeenPressed) {
                 // Retour menu principal
+                SceneType::TITLE_SCENE;
+                sceneType = TITLE_SCENE;
             }
         }
     }
@@ -80,6 +81,7 @@ void LeaderboardScene::removeNonAlphabeticalChars(std::string& str) {
     for (std::string::iterator i = str.begin(); i != str.end(); ++i) {
         if (std::isalpha(*i, loc)) {
             str.erase(i);
+            i--;
         }
     }
 }
