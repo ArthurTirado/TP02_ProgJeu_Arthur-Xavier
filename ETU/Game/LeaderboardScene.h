@@ -1,5 +1,6 @@
 #pragma once
 #include "Scene.h"
+
 class LeaderboardScene :
     public Scene
 {
@@ -13,8 +14,8 @@ private:
     std::string rankedPlayer;
     std::string nameEnteredStr;
     sf::Text nameEntered;
+    sf::Text score;
     sf::Text arrayPlaces[5];
-    std::fstream leaderBoardFile;
     int numLines = 0;
     int posY = 0;
 };
