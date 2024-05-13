@@ -6,6 +6,7 @@
 
 class TitleScene;
 class Scene;
+class Bonus;
 class Game
 {
  typedef TitleScene InitialScene;
@@ -33,5 +34,8 @@ private:
   bool popScene(bool initScene = true);
   bool pushScene(Scene* newScene);
   std::stack<Scene*> scenes;
+
+  //Bonus
+  std::list<Bonus> bonuses;
 };
 

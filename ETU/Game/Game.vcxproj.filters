@@ -82,6 +82,15 @@
     <ClInclude Include="TitleScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="Bonus.h">
+      <Filter>Bonus</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthBonus.h">
+      <Filter>Bonus</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponBonus.h">
+      <Filter>Bonus</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Publisher.cpp">
@@ -122,6 +131,15 @@
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>GenericFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Bonus.cpp">
+      <Filter>Bonus</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthBonus.cpp">
+      <Filter>Bonus</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponBonus.cpp">
+      <Filter>Bonus</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
