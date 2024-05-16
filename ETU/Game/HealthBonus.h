@@ -8,6 +8,7 @@ public:
     virtual bool init(const ContentManager& contentManager) override;
     virtual bool update(float deltaT) override;
 private:
-
+    sf::IntRect smallHeart;
+    sf::IntRect bigHeart;
 };
 
