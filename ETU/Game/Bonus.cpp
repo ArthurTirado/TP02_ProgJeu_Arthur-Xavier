@@ -20,3 +20,4 @@ void Bonus::playSound()
 {
 	bonusSFX.play();
 }
+

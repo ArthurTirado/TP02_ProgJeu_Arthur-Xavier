@@ -1,4 +1,5 @@
-﻿  game.cpp
+﻿  Bonus.cpp
+  game.cpp
 C:\Users\xavto\OneDrive\Desktop\Hiver-24\Game-Coding\TP02_ProgJeu_Arthur-Xavier\TP02_ProgJeu_Arthur-Xavier\ETU\Game\game.cpp(149,3): warning C4065: l'instruction switch contient 'default' mais aucune étiquette 'case'
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\list(292,17): error C2079: 'std::_List_node<_Ty,std::_Default_allocator_traits<_Alloc>::void_pointer>::_Myval' utilise une class de 'Bonus' non défini
           with
@@ -16,3 +17,6 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.3282
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\list(800,34): message : voir la première référence à « std::list<Bonus,std::allocator<Bonus>>::_Alloc_sentinel_and_proxy » dans « std::list<Bonus,std::allocator<Bonus>>::list »
 C:\Users\xavto\OneDrive\Desktop\Hiver-24\Game-Coding\TP02_ProgJeu_Arthur-Xavier\TP02_ProgJeu_Arthur-Xavier\ETU\Game\game.cpp(13,1): message : voir la première référence à « std::list<Bonus,std::allocator<Bonus>>::list » dans « Game::Game »
 C:\Users\xavto\OneDrive\Desktop\Hiver-24\Game-Coding\TP02_ProgJeu_Arthur-Xavier\TP02_ProgJeu_Arthur-Xavier\ETU\Game\game.h(39,20): message : voir la référence à l'instanciation classe modèle 'std::list<Bonus,std::allocator<Bonus>>' en cours de compilation
+  HealthBonus.cpp
+  WeaponBonus.cpp
+  Génération de code en cours...
