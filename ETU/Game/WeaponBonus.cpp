@@ -15,6 +15,8 @@ bool WeaponBonus::init(const ContentManager& contentManager)
 
 	bonusSprite.setTexture(contentManager.getMiscTexture());
 	bonusSprite.setTextureRect(bigGun);
+
+	return true;
 }
 
 bool WeaponBonus::update(float deltaT, int dmgTaken)

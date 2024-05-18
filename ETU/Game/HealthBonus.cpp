@@ -15,6 +15,8 @@ bool HealthBonus::init(const ContentManager& contentManager)
 
 	bonusSprite.setTexture(contentManager.getMiscTexture());
 	bonusSprite.setTextureRect(bigHeart);
+
+	return true;
 }
 
 bool HealthBonus::update(float deltaT)

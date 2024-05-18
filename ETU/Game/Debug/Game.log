@@ -1,33 +1,18 @@
-﻿  stdafx.cpp
-  AnimatedGameObject.cpp
-  Animation.cpp
-  AnimationFrame.cpp
-  CyclicAnimation.cpp
-  game.cpp
-C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\game.cpp(149,3): warning C4065: switch statement contains 'default' but no 'case' labels
-  GameObject.cpp
-  InputBasedAnimation.cpp
-  Inputs.cpp
-  LinearAnimation.cpp
-  Publisher.cpp
-  Scene.cpp
-  TitleScene.cpp
-  Generating Code...
-  Game.vcxproj -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Game.lib
-  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\Fonts\Level01\emulogic.ttf -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\Fonts\Level01\emulogic.ttf
-  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\Music\Title\SkyFire (Title Screen).ogg -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\Music\Title\SkyFire (Title Screen).ogg
-  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\SoundFX\Level01\bomb.wav -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\SoundFX\Level01\bomb.wav
-  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\SoundFX\Level01\bossSpawning.wav -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\SoundFX\Level01\bossSpawning.wav
-  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\SoundFX\Level01\enemyGun.wav -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\SoundFX\Level01\enemyGun.wav
-  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\SoundFX\Level01\enemyKilled.wav -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\SoundFX\Level01\enemyKilled.wav
-  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\SoundFX\Level01\gunBonus.wav -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\SoundFX\Level01\gunBonus.wav
-  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\SoundFX\Level01\healthBonus.wav -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\SoundFX\Level01\healthBonus.wav
-  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\SoundFX\Level01\iceball.wav -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\SoundFX\Level01\iceball.wav
-  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\SoundFX\Level01\info.txt -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\SoundFX\Level01\info.txt
-  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\SoundFX\Level01\playerGun.wav -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\SoundFX\Level01\playerGun.wav
-  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\Sprites\Level01\NES - The Guardian Legend - Bosses.bmp -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\Sprites\Level01\NES - The Guardian Legend - Bosses.bmp
-  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\Sprites\Level01\NES - The Guardian Legend - Miscellaneous.bmp -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\Sprites\Level01\NES - The Guardian Legend - Miscellaneous.bmp
-  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\Sprites\Level01\NES - The Guardian Legend - The Guardian Alyssa.bmp -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\Sprites\Level01\NES - The Guardian Legend - The Guardian Alyssa.bmp
-  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\Sprites\Level01\SpaceBackground.png -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\Sprites\Level01\SpaceBackground.png
-  C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Game\Assets\Sprites\Title\Title.png -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\ETU\Debug\Assets\Sprites\Title\Title.png
-  16 File(s) copied
+﻿  game.cpp
+C:\Users\xavto\OneDrive\Desktop\Hiver-24\Game-Coding\TP02_ProgJeu_Arthur-Xavier\TP02_ProgJeu_Arthur-Xavier\ETU\Game\game.cpp(149,3): warning C4065: l'instruction switch contient 'default' mais aucune étiquette 'case'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\list(292,17): error C2079: 'std::_List_node<_Ty,std::_Default_allocator_traits<_Alloc>::void_pointer>::_Myval' utilise une class de 'Bonus' non défini
+          with
+          [
+              _Ty=Bonus,
+              _Alloc=std::allocator<Bonus>
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\list(1837,29): message : voir la référence à l'instanciation classe modèle 'std::_List_node<_Ty,std::_Default_allocator_traits<_Alloc>::void_pointer>' en cours de compilation
+          with
+          [
+              _Ty=Bonus,
+              _Alloc=std::allocator<Bonus>
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\list(1832,10): message : pendant la compilation de la fonction membre classe modèle 'void std::list<Bonus,std::allocator<Bonus>>::_Alloc_sentinel_and_proxy(void)'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\list(800,34): message : voir la première référence à « std::list<Bonus,std::allocator<Bonus>>::_Alloc_sentinel_and_proxy » dans « std::list<Bonus,std::allocator<Bonus>>::list »
+C:\Users\xavto\OneDrive\Desktop\Hiver-24\Game-Coding\TP02_ProgJeu_Arthur-Xavier\TP02_ProgJeu_Arthur-Xavier\ETU\Game\game.cpp(13,1): message : voir la première référence à « std::list<Bonus,std::allocator<Bonus>>::list » dans « Game::Game »
+C:\Users\xavto\OneDrive\Desktop\Hiver-24\Game-Coding\TP02_ProgJeu_Arthur-Xavier\TP02_ProgJeu_Arthur-Xavier\ETU\Game\game.h(39,20): message : voir la référence à l'instanciation classe modèle 'std::list<Bonus,std::allocator<Bonus>>' en cours de compilation
