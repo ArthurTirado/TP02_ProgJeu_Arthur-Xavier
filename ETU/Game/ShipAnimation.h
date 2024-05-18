@@ -6,6 +6,9 @@
 class ShipAnimation
 	: public InputBasedAnimation, public LinearAnimation
 {
+public:	
+	static const int NEUTRAL_ANIMATION_LENGTH_IN_SECONDS;
+	static const int NBS_NEUTRAL_ANIMATION_FRAMES;
 public:
 	ShipAnimation(sf::Sprite& sprite);
 	virtual void adjustNextFrame(const Inputs& inputs) override;
@@ -14,10 +17,9 @@ public:
 private:
 	int nbFrameInStateX;
 
-	sf::IntRect shipAnimationHorizontalMovementFrames[5];
 	sf::IntRect	hardLeft = sf::IntRect(182, 87, 13, 27);
-	sf::IntRect left = sf::IntRect(156, 87, 17, 28);;
-	sf::IntRect neutral1 = sf::IntRect(36, 87, 22, 27);;
+	sf::IntRect left = sf::IntRect(156, 87, 17, 28);
+	sf::IntRect neutral1 = sf::IntRect(36, 87, 22, 27);
 	sf::IntRect neutral2 = sf::IntRect(7, 87, 22, 27);
 	sf::IntRect neutral3 = sf::IntRect(65, 87, 22, 29);
 	sf::IntRect neutral4 = sf::IntRect(95, 87, 22, 30);
