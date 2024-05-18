@@ -13,13 +13,15 @@ public:
 	virtual bool init(const ContentManager& contentManager) override;
 private:
 	int nbFrameInStateX;
-	sf::IntRect hardLeft;
-	sf::IntRect left;
-	sf::IntRect neutral1;
-	sf::IntRect neutral2;
-	sf::IntRect neutral3;
-	sf::IntRect neutral4;
-	sf::IntRect right;
-	sf::IntRect hardRight;
+
+	sf::IntRect shipAnimationHorizontalMovementFrames[5];
+	sf::IntRect	hardLeft = sf::IntRect(182, 87, 13, 27);
+	sf::IntRect left = sf::IntRect(156, 87, 17, 28);;
+	sf::IntRect neutral1 = sf::IntRect(36, 87, 22, 27);;
+	sf::IntRect neutral2 = sf::IntRect(7, 87, 22, 27);
+	sf::IntRect neutral3 = sf::IntRect(65, 87, 22, 29);
+	sf::IntRect neutral4 = sf::IntRect(95, 87, 22, 30);
+	sf::IntRect right = sf::IntRect(225, 87, 17, 28);
+	sf::IntRect hardRight = sf::IntRect(203, 87, 13, 27);
 };
 
