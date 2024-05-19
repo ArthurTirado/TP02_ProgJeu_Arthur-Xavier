@@ -7,6 +7,7 @@ const int ShipAnimation::NBS_NEUTRAL_ANIMATION_FRAMES = 4;
 
 ShipAnimation::ShipAnimation(sf::Sprite& sprite)
 	: InputBasedAnimation(sprite), LinearAnimation(sprite, NEUTRAL_ANIMATION_LENGTH_IN_SECONDS, true)
+	, nbFrameInStateX(25)
 {
 }
 
@@ -29,14 +30,19 @@ void ShipAnimation::adjustNextFrame(const Inputs& inputs)
 	if (nbFrameInStateX > 40) {
 		nextFrame = 4;
 	}
-	else if (nbFrameInStateX > 27) {
+	else if (nbFrameInStateX > 30) {
 		nextFrame = 3;
 	}
-	else if (nbFrameInStateX > 14) {
+	else if (nbFrameInStateX > 20) {
 		nextFrame = 1;
 	}
-	else
+	else {
 		nextFrame = 0;
+	}
+
+	if (nbFrameInStateX == 25){
+		nextFrame = 2;
+	}
 }
 
 void ShipAnimation::update(float deltaT, const Inputs& inputs) {
