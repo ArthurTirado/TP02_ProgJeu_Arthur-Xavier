@@ -47,6 +47,16 @@
     <ClCompile Include="TitleScreenContentManager.cpp">
       <Filter>Scene\TitleScene</Filter>
     </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyBullet.cpp">
+      <Filter>Projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerBullet.cpp">
+      <Filter>Projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Bonus.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Event.h" />
@@ -112,6 +122,17 @@
     <ClInclude Include="TitleScreenContentManager.h">
       <Filter>Scene\TitleScene</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Bullet.h">
+      <Filter>Projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBullet.h">
+      <Filter>Projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerBullet.h">
+      <Filter>Projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Bonus.h" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="..\extern\SFML\bin\openal32.dll" />
@@ -144,6 +165,9 @@
     </Filter>
     <Filter Include="Scene\LeaderboardScene">
       <UniqueIdentifier>{67b0dec5-40c7-429b-b146-256e2a698920}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Projectiles">
+      <UniqueIdentifier>{12797e12-82fe-4de0-b640-24c2c9ad94af}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
