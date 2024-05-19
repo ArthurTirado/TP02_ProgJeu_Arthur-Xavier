@@ -5,8 +5,8 @@
 #include <locale>
 
 LeaderboardScene::LeaderboardScene(SceneType type)
-	: Scene(type)
-	, sceneType(type){
+    : Scene(type)
+    , sceneType(type) {
 }
 
 bool LeaderboardScene::handleEvents(sf::RenderWindow& window)
@@ -25,7 +25,7 @@ bool LeaderboardScene::handleEvents(sf::RenderWindow& window)
         numLines++;
         posY += 200;
     }
-        
+
     bool retval = false;
     while (window.pollEvent(event))
     {
@@ -51,7 +51,7 @@ bool LeaderboardScene::handleEvents(sf::RenderWindow& window)
                 leaderBoardFile.close();
                 enterHasBeenPressed = true;
             }
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && enterHasBeenPressed) {
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && enterHasBeenPressed) {
                 // Retour menu principal
                 SceneType::TITLE_SCENE;
                 sceneType = TITLE_SCENE;
