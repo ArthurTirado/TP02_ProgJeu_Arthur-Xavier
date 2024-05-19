@@ -1,65 +1,65 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Bonus">
-      <UniqueIdentifier>{f81dc113-d171-4da8-a580-e946f80bab53}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="PubSub">
-      <UniqueIdentifier>{5cca3c48-32c6-4d35-90d9-d7329e8e3429}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Animations">
-      <UniqueIdentifier>{9ed0a21d-58fc-4567-a92e-94cf3743e0ef}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Scenes">
-      <UniqueIdentifier>{2da220f6-b49f-4d73-8dc9-d5e8db51128f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Characters">
-      <UniqueIdentifier>{88fbd685-f9bd-47a7-bbe5-d699b703812e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GenericFiles">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Inputs.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="AnimatedGameObject.cpp">
+      <Filter>Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationFrame.cpp">
+      <Filter>Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="BossAnimation.cpp">
+      <Filter>Animations\Character-Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyAnimation.cpp">
+      <Filter>Animations\Character-Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="InputBasedAnimation.cpp">
+      <Filter>Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="CyclicAnimation.cpp">
+      <Filter>Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="ShipAnimation.cpp">
+      <Filter>Animations\Character-Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="LeaderboardScene.cpp">
+      <Filter>Scene\LeaderboardScene</Filter>
+    </ClCompile>
+    <ClCompile Include="LinearAnimation.cpp">
+      <Filter>Animations</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Publisher.cpp">
+      <Filter>PubSub</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>Scene\TitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScreenContentManager.cpp">
+      <Filter>Scene\TitleScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="targetver.h">
-      <Filter>GenericFiles</Filter>
-    </ClInclude>
-    <ClInclude Include="game.h">
-      <Filter>GenericFiles</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>GenericFiles</Filter>
-    </ClInclude>
-    <ClInclude Include="Inputs.h">
-      <Filter>GenericFiles</Filter>
-    </ClInclude>
+    <ClInclude Include="Event.h" />
+    <ClInclude Include="game.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Inputs.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
     <ClInclude Include="AnimatedGameObject.h">
-      <Filter>GenericFiles</Filter>
+      <Filter>Animations</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>Animations</Filter>
-    </ClInclude>
-    <ClInclude Include="CyclicAnimation.h">
-      <Filter>Animations</Filter>
-    </ClInclude>
-    <ClInclude Include="InputBasedAnimation.h">
-      <Filter>Animations</Filter>
-    </ClInclude>
-    <ClInclude Include="LinearAnimation.h">
-      <Filter>Animations</Filter>
-    </ClInclude>
-    <ClInclude Include="ActorType.h">
-      <Filter>GenericFiles</Filter>
-    </ClInclude>
-    <ClInclude Include="Publisher.h">
-      <Filter>PubSub</Filter>
-    </ClInclude>
-    <ClInclude Include="Event.h">
-      <Filter>PubSub</Filter>
-    </ClInclude>
-    <ClInclude Include="Subscriber.h">
-      <Filter>PubSub</Filter>
     </ClInclude>
     <ClInclude Include="AnimationFrame.h">
       <Filter>Animations</Filter>
@@ -67,74 +67,51 @@
     <ClInclude Include="AnimationState.h">
       <Filter>Animations</Filter>
     </ClInclude>
-    <ClInclude Include="scenetype.h">
-      <Filter>Scenes</Filter>
+    <ClInclude Include="BossAnimation.h">
+      <Filter>Animations\Character-Animations</Filter>
     </ClInclude>
-    <ClInclude Include="SceneResult.h">
-      <Filter>Scenes</Filter>
+    <ClInclude Include="EnemyAnimation.h">
+      <Filter>Animations\Character-Animations</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Scenes</Filter>
+    <ClInclude Include="InputBasedAnimation.h">
+      <Filter>Animations</Filter>
     </ClInclude>
-    <ClInclude Include="stdafx.h">
-      <Filter>GenericFiles</Filter>
+    <ClInclude Include="CyclicAnimation.h">
+      <Filter>Animations</Filter>
     </ClInclude>
-    <ClInclude Include="TitleScene.h">
-      <Filter>Scenes</Filter>
+    <ClInclude Include="ShipAnimation.h">
+      <Filter>Animations\Character-Animations</Filter>
     </ClInclude>
     <ClInclude Include="LeaderboardScene.h">
-      <Filter>Scenes</Filter>
-      </ClInclude>
-    <ClInclude Include="TitleScreenContentManager.h">
-      <Filter>GenericFiles</Filter>
+      <Filter>Scene\LeaderboardScene</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Publisher.cpp">
+    <ClInclude Include="LinearAnimation.h">
+      <Filter>Animations</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneResult.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="scenetype.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Subscriber.h">
       <Filter>PubSub</Filter>
-    </ClCompile>
-    <ClCompile Include="Animation.cpp">
-      <Filter>Animations</Filter>
-    </ClCompile>
-    <ClCompile Include="CyclicAnimation.cpp">
-      <Filter>Animations</Filter>
-    </ClCompile>
-    <ClCompile Include="InputBasedAnimation.cpp">
-      <Filter>Animations</Filter>
-    </ClCompile>
-    <ClCompile Include="LinearAnimation.cpp">
-      <Filter>Animations</Filter>
-    </ClCompile>
-    <ClCompile Include="AnimationFrame.cpp">
-      <Filter>Animations</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleScene.cpp">
-      <Filter>Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="AnimatedGameObject.cpp">
-      <Filter>GenericFiles</Filter>
-    </ClCompile>
-    <ClCompile Include="game.cpp">
-      <Filter>GenericFiles</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>GenericFiles</Filter>
-    </ClCompile>
-    <ClCompile Include="Inputs.cpp">
-      <Filter>GenericFiles</Filter>
-    </ClCompile>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>GenericFiles</Filter>
-    </ClCompile>
-    <ClCompile Include="LeaderboardScene.cpp">
-      <Filter>Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleScreenContentManager.cpp" />
-      <Filter>Scenes</Filter>
-    </ClCompile>
+    </ClInclude>
+    <ClInclude Include="Publisher.h">
+      <Filter>PubSub</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorType.h">
+      <Filter>PubSub</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>Scene\TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScreenContentManager.h">
+      <Filter>Scene\TitleScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="..\extern\SFML\bin\openal32.dll" />
@@ -148,5 +125,25 @@
     <CopyFileToFolders Include="..\extern\SFML\bin\sfml-system-d-2.dll" />
     <CopyFileToFolders Include="..\extern\SFML\bin\sfml-window-2.dll" />
     <CopyFileToFolders Include="..\extern\SFML\bin\sfml-window-d-2.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Animations">
+      <UniqueIdentifier>{ce108a47-e53a-44fd-877a-6c5944f43613}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animations\Character-Animations">
+      <UniqueIdentifier>{aecf49de-fa14-4ca9-9028-fd82f14e2415}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{dfec258a-4145-49b2-b976-0a752ff0c0a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PubSub">
+      <UniqueIdentifier>{03e1d8e0-498f-4cb6-ac31-0e02cd76e265}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\TitleScene">
+      <UniqueIdentifier>{ffd289aa-ec76-4832-b6a7-65d0a8e4969e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\LeaderboardScene">
+      <UniqueIdentifier>{67b0dec5-40c7-429b-b146-256e2a698920}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
