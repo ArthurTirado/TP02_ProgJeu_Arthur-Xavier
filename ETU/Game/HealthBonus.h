@@ -8,6 +8,6 @@ public:
     virtual bool init(const ContentManager& contentManager) override;
     virtual bool update(float deltaT) override;
 private:
-    sf::IntRect smallHeart;
-    sf::IntRect bigHeart;
+    sf::IntRect smallHeart = sf::IntRect(315, 109, 6, 6);
+    sf::IntRect bigHeart = sf::IntRect(229, 64, 10, 9);
 };

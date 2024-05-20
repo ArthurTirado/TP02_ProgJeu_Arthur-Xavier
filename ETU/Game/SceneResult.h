@@ -2,16 +2,20 @@
 
 struct TitleSceneResult
 {
-  int dummy;
 };
 
-struct LeaderboardSceneResult {
-	int dummy;
+struct LeaderboardSceneResult 
+{
+};
+
+struct GameSceneResult {
 };
 
 
 union SceneResult
 {
+	int score;
   TitleSceneResult titleSceneResult;
+  GameSceneResult gameSceneResult;
   LeaderboardSceneResult leaderboardSceneResult;
 };

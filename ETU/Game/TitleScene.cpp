@@ -75,13 +75,14 @@ bool TitleScene::handleEvents(sf::RenderWindow& window)
   while (window.pollEvent(event))
   {
     //x sur la fenêtre
-    if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+    if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) || sf::Joystick::isButtonPressed(0, 1))
     {
       window.close();
       retval = true;
     }
-    else if (event.type == sf::Event::KeyPressed) {
-        retval = true;
+    else {
+        SceneType::GAME_SCENE;
+        titleScreenMusic.stop();
     }
   }
   return retval;

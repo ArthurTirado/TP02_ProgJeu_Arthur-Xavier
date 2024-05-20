@@ -45,9 +45,9 @@ void ShipAnimation::adjustNextFrame(const Inputs& inputs)
 	}
 }
 
-void ShipAnimation::update(float deltaT, const Inputs& inputs) {
-	LinearAnimation::update(deltaT, inputs);
-}
+//void ShipAnimation::update(float deltaT, const Inputs& inputs) {
+//	LinearAnimation::update(deltaT, inputs);
+//}
 
 bool ShipAnimation::init(const ContentManager& contentManager)
 {

@@ -12,7 +12,7 @@ public:
 public:
 	ShipAnimation(sf::Sprite& sprite);
 	virtual void adjustNextFrame(const Inputs& inputs) override;
-	virtual void update(float deltaT, const Inputs& inputs) override;
+	//virtual void update(float deltaT, const Inputs& inputs) override;
 	virtual bool init(const ContentManager& contentManager) override;
 private:
 	int nbFrameInStateX;

@@ -12,8 +12,6 @@ public:
    static const int TITLE_TEXT_SIZE;
    static const int SMALL_TEXT_SIZE;
 
-
-
   // Héritées via Scene
   TitleScene();
   ~TitleScene();

@@ -4,9 +4,8 @@
 #include <iostream>
 #include <locale>
 
-LeaderboardScene::LeaderboardScene(SceneType type)
-	: Scene(type)
-	, sceneType(type){
+LeaderboardScene::LeaderboardScene()
+	: Scene(SceneType::LEADERBOARD_SCENE){
 }
 
 bool LeaderboardScene::handleEvents(sf::RenderWindow& window)
@@ -54,7 +53,6 @@ bool LeaderboardScene::handleEvents(sf::RenderWindow& window)
             if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && enterHasBeenPressed) {
                 // Retour menu principal
                 SceneType::TITLE_SCENE;
-                sceneType = TITLE_SCENE;
             }
         }
     }

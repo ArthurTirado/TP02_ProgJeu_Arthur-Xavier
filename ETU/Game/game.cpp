@@ -2,6 +2,7 @@
 #include "game.h"
 #include "ContentManager.h"
 #include "TitleScene.h"
+#include "GameScene.h"
 #include "scenetype.h"
 
 const unsigned int Game::FRAME_RATE = 60;
@@ -140,7 +141,9 @@ Scene* Game::getNextScene(SceneType type) const
   Scene* scene =nullptr;
   switch (type)
   {
-
+  case SceneType::GAME_SCENE: {
+      scene = new GameScene();
+  }
   default:
   {
     scene = nullptr;

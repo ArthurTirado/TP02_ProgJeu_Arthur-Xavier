@@ -16,7 +16,7 @@ public:
 	virtual bool init(const ContentManager& contentManager) override;
 	bool canShoot();
 private:
-	sf::RectangleShape hitbox;
+	sf::RectangleShape hitbox = sf::RectangleShape(sf::Vector2f(83, 176));
 	sf::IntRect opening1 = sf::IntRect(32, 1906, 83, 122);
 	sf::IntRect opening2 = sf::IntRect(133, 1906, 83, 124);
 	sf::IntRect opening3 = sf::IntRect(232, 1906, 85, 137);

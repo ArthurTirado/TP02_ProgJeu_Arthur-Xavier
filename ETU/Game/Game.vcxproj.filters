@@ -57,6 +57,14 @@
       <Filter>Projectiles</Filter>
     </ClCompile>
     <ClCompile Include="Bonus.cpp" />
+    <ClCompile Include="GameScene.cpp">
+      <Filter>Scene\GameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Hud.cpp">
+      <Filter>Hud</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthBonus.cpp" />
+    <ClCompile Include="WeaponBonus.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Event.h" />
@@ -133,6 +141,14 @@
       <Filter>Projectiles</Filter>
     </ClInclude>
     <ClInclude Include="Bonus.h" />
+    <ClInclude Include="GameScene.h">
+      <Filter>Scene\GameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Hud.h">
+      <Filter>Hud</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthBonus.h" />
+    <ClInclude Include="WeaponBonus.h" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="..\extern\SFML\bin\openal32.dll" />
@@ -168,6 +184,12 @@
     </Filter>
     <Filter Include="Projectiles">
       <UniqueIdentifier>{12797e12-82fe-4de0-b640-24c2c9ad94af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\GameScene">
+      <UniqueIdentifier>{070556b8-aab8-4deb-9e00-05cda69748c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hud">
+      <UniqueIdentifier>{6f8e395e-5f32-46b9-ac4a-096e83b9cd34}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

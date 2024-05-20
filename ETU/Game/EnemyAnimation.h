@@ -16,7 +16,7 @@ public:
 	virtual void update(float deltaT, const Inputs& inputs) override;
 	virtual bool init(const ContentManager& contentManager) override;
 private:
-	sf::RectangleShape hitbox;
+	sf::RectangleShape hitbox = sf::RectangleShape(sf::Vector2f(63, 95));
 
 	sf::IntRect opening1 = sf::IntRect(28, 917, 63, 95);
 	sf::IntRect opening2 = sf::IntRect(101, 917, 63, 95);

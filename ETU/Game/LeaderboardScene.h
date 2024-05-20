@@ -5,12 +5,11 @@ class LeaderboardScene :
     public Scene
 {
 public:
-    LeaderboardScene(SceneType type);
+    LeaderboardScene();
     virtual bool handleEvents(sf::RenderWindow& window) override;
 private:
     void writeScoreInFile(std::fstream& leaderBoardFile, std::string nameAndScore);
     void removeNonAlphabeticalChars(std::string& str);
-    SceneType sceneType;
     std::string rankedPlayer;
     std::string nameEnteredStr;
     sf::Text nameEntered;
