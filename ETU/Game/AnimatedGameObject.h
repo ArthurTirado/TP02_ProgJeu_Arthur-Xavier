@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "AnimationState.h"
+#include "Animation.h"
 
 class ContentManager;
 class Animation;
@@ -19,6 +20,15 @@ public:
 
 protected:
   State currentState;
+  template<State state, class AnimationType >
+  bool addAnimation(const ContentManager& contentManager)
+  {
+      Animation* animation = new AnimationType(*this);
+      bool retval = animation->init(contentManager);
+      if (retval)
+          animations[state] = animation;
+      return retval;
+  }
   std::map<State, Animation*> animations;
   ContentManager* contentManager;
 private:

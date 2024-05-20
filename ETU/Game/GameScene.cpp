@@ -8,7 +8,9 @@
 const float GameScene::SCROLL_SPEED = -1.0f;
 const int GameScene::CONTROLLER_DEAD_ZONE = 20;
 const float GameScene::GAMEPAD_SPEEDRATIO = 10.0f;
-const float GameScene::KEYBOARD_SPEED = 1.0f;
+const float GameScene::KEYBOARD_SPEED = 0.01f;
+const float GameScene::TIME_PER_FRAME = 1.0f / (float)Game::FRAME_RATE;
+
 
 
 #pragma endregion
@@ -31,13 +33,15 @@ SceneType GameScene::update()
     gameBackground.setTextureRect(sf::IntRect(0, (int)(SCROLL_SPEED * cptScrollBackground++), Game::GAME_WIDTH, Game::GAME_HEIGHT));
     SceneType retval = getSceneType();
     
+    player.update(TIME_PER_FRAME,inputs);
+
     return getSceneType();
 }
 
 void GameScene::draw(sf::RenderWindow& window) const
 {
     window.draw(gameBackground);
-
+    window.draw(player);
 }
 
 bool GameScene::init()
@@ -47,7 +51,12 @@ bool GameScene::init()
     gameBackgroundTexture = contentManager.getBackgroundTexture();
     gameBackgroundTexture.setRepeated(true);
     gameBackground.setTexture(gameBackgroundTexture);
-
+    player.init(contentManager);
+    //Music
+    if (!gameMusic.openFromFile("Assets\\Music\\Title\\SgMusic.ogg"))
+        return false;
+    gameMusic.setLoop(true);
+    gameMusic.play();
     return true;
 }
 
@@ -92,9 +101,9 @@ bool GameScene::handleEvents(sf::RenderWindow& window)
             inputs.moveFactorX += GameScene::KEYBOARD_SPEED;
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-            inputs.moveFactorY -= GameScene::KEYBOARD_SPEED;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
             inputs.moveFactorY += GameScene::KEYBOARD_SPEED;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+            inputs.moveFactorY -= GameScene::KEYBOARD_SPEED;
 
 
         inputs.fireBullet = sf::Mouse::isButtonPressed(sf::Mouse::Left) && (recoil <= 0);

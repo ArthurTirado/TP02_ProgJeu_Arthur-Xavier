@@ -2,6 +2,8 @@
 #include "Scene.h"
 #include "ContentManager.h"
 #include "Inputs.h"
+#include "Inputs.h"
+#include "Player.h"
 
 class GameScene :
     public Scene
@@ -12,6 +14,8 @@ public:
     static const int CONTROLLER_DEAD_ZONE;
     static const float GAMEPAD_SPEEDRATIO;
     static const float KEYBOARD_SPEED;
+    static const float TIME_PER_FRAME;
+
 
     // Héritées via Scene
     GameScene();
@@ -25,10 +29,11 @@ public:
 private:
     sf::Texture gameBackgroundTexture;
     sf::Sprite gameBackground;
-    sf::Music titleScreenMusic;
+    sf::Music gameMusic;
     ContentManager contentManager;
     bool passToLeaderboard;
     Inputs inputs;
     float recoil;
+    Player player;
 };
 
