@@ -9,6 +9,7 @@
 #include "Boss.h"
 #include "Canon.h"
 #include "Player.h"
+#include "Hud.h"
 
 class GameScene :
     public Scene
@@ -28,13 +29,9 @@ public:
     virtual bool uninit() override;
     virtual bool handleEvents(sf::RenderWindow& window) override;
 private:
-    sf::Sprite playerSprite;
     sf::Sprite playerBulletSprite;
-    sf::Sprite enemySprite;
     sf::Sprite enemyBulletSprite;
-    sf::Sprite bossSprite;
     sf::Sprite background;
-    sf::Sprite menuImage;
     ContentManager contentManager;
     std::list<PlayerBullet> playerBullets;
     std::list<EnemyBullet> enemyBullets;
@@ -44,5 +41,6 @@ private:
     Player player;
     Canon canon;
     Boss boss;
+    Hud hud;
 };
 

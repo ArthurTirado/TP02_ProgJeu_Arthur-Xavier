@@ -27,12 +27,31 @@ SceneType GameScene::update()
 
 void GameScene::draw(sf::RenderWindow& window) const
 {
-	//window.draw();
+	window.draw(background);
+
+	for (const PlayerBullet& b : playerBullets) {
+		b.draw(window);
+	}
+
+	for (const EnemyBullet& b : enemyBullets) {
+		b.draw(window);
+	}
+
+	for (const HealthBonus& hb : healthBonuses) {
+		hb.draw(window);
+	}
+
+	for (const WeaponBonus& wb : gunBonuses) {
+		wb.draw(window);
+	}
+	player.draw(window);
+	canon.draw(window);
+	boss.draw(window);
+	hud.draw(window);
 }
 
 bool GameScene::init()
 {
-
 	// Bonus HP
 	for (int i = 0; i < NB_HP_BONUSES; i++) {
 		HealthBonus newBonus;
@@ -62,8 +81,6 @@ bool GameScene::init()
 		newBullet.init(contentManager);
 		enemyBullets.push_back(newBullet);
 	}
-
-
 }
 
 bool GameScene::uninit()
@@ -73,5 +90,5 @@ bool GameScene::uninit()
 
 bool GameScene::handleEvents(sf::RenderWindow& window)
 {
-	return false;
+	return true;
 }
