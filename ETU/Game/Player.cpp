@@ -7,7 +7,10 @@
 #include "game.h"
 
 const int Player::PLAYER_HP = 200;
-const int Player::PLAYER_SPD = 250;
+const int Player::PLAYER_SPD = 500;
+const float Player::PLAYER_SCALE = 4.0f; 
+const float Player::CANNON_POSITION = 30.0f;
+
 
 Player::Player()
 	: playerHP(PLAYER_HP)
@@ -22,6 +25,7 @@ bool Player::init(const ContentManager& contentManager)
 
 	setTexture(contentManager.getMainCharacterTexture());
 	setTextureRect(sf::IntRect(36, 87, 22, 27));
+	setScale(PLAYER_SCALE, PLAYER_SCALE); 
 	currentState = State::SHIP;
 
 	//ShipAnimation* shipAnimation = new ShipAnimation(*this);

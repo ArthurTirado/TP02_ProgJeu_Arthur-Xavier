@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "GameScene.h"
-
+#include <iostream>
 #include "game.h"
 
 #pragma region Constantes
@@ -10,6 +10,10 @@ const int GameScene::CONTROLLER_DEAD_ZONE = 20;
 const float GameScene::GAMEPAD_SPEEDRATIO = 10.0f;
 const float GameScene::KEYBOARD_SPEED = 0.01f;
 const float GameScene::TIME_PER_FRAME = 1.0f / (float)Game::FRAME_RATE;
+const int GameScene::NB_BULLETS_PLAYER = 200;
+const float GameScene::BULLET_RECOIL = 0.2f;
+
+
 
 
 
@@ -35,13 +39,37 @@ SceneType GameScene::update()
     
     player.update(TIME_PER_FRAME,inputs);
 
+    //bullet
+    if (recoil > 0) {
+        recoil -= TIME_PER_FRAME;
+    }
+    else {
+        recoil = 0;
+    }
+    if (inputs.fireBullet) {
+        firePlayerBullet();
+    }
+    std::cout << recoil;
+
+    for (PlayerBullet& p : playerBullets) {
+        if (p.update(TIME_PER_FRAME)) {
+            p.deactivate();
+        }
+    }
+
     return getSceneType();
 }
 
 void GameScene::draw(sf::RenderWindow& window) const
 {
+    //window.draw(bulletTest);
     window.draw(gameBackground);
     window.draw(player);
+
+    for (const PlayerBullet& b : playerBullets) {
+        b.draw(window);
+    }
+
 }
 
 bool GameScene::init()
@@ -57,6 +85,17 @@ bool GameScene::init()
         return false;
     gameMusic.setLoop(true);
     gameMusic.play();
+    //PlayerBullets
+    // Balles joueur
+    for (int i = 0; i < NB_BULLETS_PLAYER; i++)
+    {
+        PlayerBullet newBullet;
+        newBullet.init(contentManager);
+        newBullet.setPosition(player.getPosition());
+        playerBullets.push_back(newBullet);
+    }
+
+
     return true;
 }
 
@@ -117,4 +156,29 @@ float GameScene::handleControllerDeadZone(float analogInput)
         analogInput = 0.0f;
     }
     return analogInput;
+}
+PlayerBullet& GameScene::getAvailablePlayerBullet()
+{
+    for (PlayerBullet& b : playerBullets)
+    {
+        if (!b.isActive())
+        {
+            b.activate();
+            return b;
+        }
+    }
+    return playerBullets.front();
+}
+
+void GameScene::firePlayerBullet()
+{
+    if (recoil == 0) {
+        PlayerBullet& bullet1 = getAvailablePlayerBullet();
+        bullet1.activate();
+        bullet1.setPosition(player.getPosition().x + Player::CANNON_POSITION, player.getPosition().y);
+        PlayerBullet& bullet2 = getAvailablePlayerBullet();
+        bullet2.activate();
+        bullet2.setPosition(player.getPosition().x - Player::CANNON_POSITION, player.getPosition().y);
+        recoil = BULLET_RECOIL;
+    }
 }

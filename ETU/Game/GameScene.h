@@ -4,6 +4,8 @@
 #include "Inputs.h"
 #include "Inputs.h"
 #include "Player.h"
+#include "PlayerBullet.h"
+
 
 class GameScene :
     public Scene
@@ -15,6 +17,8 @@ public:
     static const float GAMEPAD_SPEEDRATIO;
     static const float KEYBOARD_SPEED;
     static const float TIME_PER_FRAME;
+    static const int NB_BULLETS_PLAYER;
+    static const float BULLET_RECOIL;
 
 
     // Héritées via Scene
@@ -35,5 +39,9 @@ private:
     Inputs inputs;
     float recoil;
     Player player;
+
+    std::list<PlayerBullet> playerBullets;
+    void firePlayerBullet();
+    PlayerBullet& getAvailablePlayerBullet();
 };
 

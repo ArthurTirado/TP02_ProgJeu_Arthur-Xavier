@@ -26,6 +26,15 @@
     <Filter Include="Animations\Characters">
       <UniqueIdentifier>{1d29100b-2a5b-44fb-93b6-0b47a5095662}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Projectiles">
+      <UniqueIdentifier>{8de64955-dfb8-4654-a4b5-6f25328ead5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Projectiles\Bullet">
+      <UniqueIdentifier>{7e26e11b-fe26-4d0c-bf3f-3e0d19d57208}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Projectiles\Player">
+      <UniqueIdentifier>{1a5a7eeb-78f0-4c9c-a086-eb7588f6980f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h">
@@ -109,6 +118,9 @@
     <ClInclude Include="Player.h">
       <Filter>Characters</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerBullet.h">
+      <Filter>Projectiles\Player</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Publisher.cpp">
@@ -166,6 +178,9 @@
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerBullet.cpp">
+      <Filter>Projectiles\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

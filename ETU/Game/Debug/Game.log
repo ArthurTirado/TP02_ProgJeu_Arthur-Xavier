@@ -1,5 +1,11 @@
-﻿  ShipAnimation.cpp
-C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\TP02_ProgJeu_Arthur-Xavier\ETU\Game\ShipAnimation.cpp(74,29): warning C4834: discarding return value of function with 'nodiscard' attribute
+﻿  Player.cpp
+C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\TP02_ProgJeu_Arthur-Xavier\ETU\Game\Player.cpp(24,45): warning C4244: 'argument': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  PlayerBullet.cpp
+  Generating Code...
   Game.vcxproj -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\TP02_ProgJeu_Arthur-Xavier\ETU\Debug\Game.lib
   C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\TP02_ProgJeu_Arthur-Xavier\ETU\Game\Assets\Fonts\Level01\emulogic.ttf -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\TP02_ProgJeu_Arthur-Xavier\ETU\Debug\Assets\Fonts\Level01\emulogic.ttf
   C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\TP02_ProgJeu_Arthur-Xavier\ETU\Game\Assets\Music\Title\SgMusic.ogg -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\TP02_ProgJeu_Arthur-Xavier\ETU\Debug\Assets\Music\Title\SgMusic.ogg
