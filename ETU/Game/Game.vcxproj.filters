@@ -56,15 +56,33 @@
     <ClCompile Include="PlayerBullet.cpp">
       <Filter>Projectiles</Filter>
     </ClCompile>
-    <ClCompile Include="Bonus.cpp" />
     <ClCompile Include="GameScene.cpp">
       <Filter>Scene\GameScene</Filter>
     </ClCompile>
     <ClCompile Include="Hud.cpp">
       <Filter>Hud</Filter>
     </ClCompile>
-    <ClCompile Include="HealthBonus.cpp" />
-    <ClCompile Include="WeaponBonus.cpp" />
+    <ClCompile Include="Bonus.cpp">
+      <Filter>Bonus</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthBonus.cpp">
+      <Filter>Bonus</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponBonus.cpp">
+      <Filter>Bonus</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="Canon.cpp">
+      <Filter>Actors</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Event.h" />
@@ -140,15 +158,33 @@
     <ClInclude Include="PlayerBullet.h">
       <Filter>Projectiles</Filter>
     </ClInclude>
-    <ClInclude Include="Bonus.h" />
     <ClInclude Include="GameScene.h">
       <Filter>Scene\GameScene</Filter>
     </ClInclude>
     <ClInclude Include="Hud.h">
       <Filter>Hud</Filter>
     </ClInclude>
-    <ClInclude Include="HealthBonus.h" />
-    <ClInclude Include="WeaponBonus.h" />
+    <ClInclude Include="Bonus.h">
+      <Filter>Bonus</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthBonus.h">
+      <Filter>Bonus</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponBonus.h">
+      <Filter>Bonus</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="Canon.h">
+      <Filter>Actors</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="..\extern\SFML\bin\openal32.dll" />
@@ -190,6 +226,12 @@
     </Filter>
     <Filter Include="Hud">
       <UniqueIdentifier>{6f8e395e-5f32-46b9-ac4a-096e83b9cd34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actors">
+      <UniqueIdentifier>{9e242b82-d561-4b20-8383-5a49a3fc8794}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Bonus">
+      <UniqueIdentifier>{e8b1909b-4945-43d3-9aae-917491b27c63}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
