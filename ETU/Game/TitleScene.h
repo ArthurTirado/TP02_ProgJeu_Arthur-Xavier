@@ -30,5 +30,6 @@ private:
   sf::Music titleScreenMusic;
   sf::RectangleShape blackBar;
   TitleScreenContentManager contentManager;
+  bool passToGameMatch;
 };
 

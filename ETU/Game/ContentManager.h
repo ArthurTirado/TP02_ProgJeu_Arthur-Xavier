@@ -1,4 +1,5 @@
 #pragma once
+#pragma once
 class ContentManager
 {
 public:
@@ -29,6 +30,3 @@ private:
 	sf::SoundBuffer gunBonusSoundBuffer;
 	sf::SoundBuffer enemyKilledSoundBuffer;
 };
-
-
-
