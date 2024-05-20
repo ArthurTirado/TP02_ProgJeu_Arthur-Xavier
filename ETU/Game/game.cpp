@@ -2,11 +2,14 @@
 #include "game.h"
 #include "ContentManager.h"
 #include "TitleScene.h"
+#include "GameMatch.h"
 #include "scenetype.h"
 
 const unsigned int Game::FRAME_RATE = 60;
 const unsigned int Game::GAME_WIDTH = 720;
 const unsigned int Game::GAME_HEIGHT = 1080;
+const float Game::TIME_PER_FRAME = 1.0f / (float)Game::FRAME_RATE;
+
 
 Game::Game(std::string windowName)
   : gameName(windowName)
@@ -122,7 +125,7 @@ bool Game::init()
   window.create(sf::VideoMode(Game::GAME_WIDTH, Game::GAME_HEIGHT, 32), gameName);
   window.setFramerateLimit(FRAME_RATE);
   
-  return pushScene(new InitialScene());
+  return pushScene(new TitleScene());
 }
 
 bool Game::uninit()
@@ -137,16 +140,19 @@ bool Game::uninit()
 
 Scene* Game::getNextScene(SceneType type) const
 {
-  Scene* scene =nullptr;
-  switch (type)
-  {
-
-  default:
-  {
-    scene = nullptr;
-    break;
-  }
-  }
-  return scene;
+    Scene* scene = nullptr;
+    switch (type)
+    {
+    case SceneType::TITLE_SCENE:
+        scene = new TitleScene();
+        break;
+    case SceneType::GAME_MATCH:
+        scene = new GameMatch(); 
+        break;
+    default:
+        scene = nullptr;
+        break;
+    }
+    return scene;
 }
 

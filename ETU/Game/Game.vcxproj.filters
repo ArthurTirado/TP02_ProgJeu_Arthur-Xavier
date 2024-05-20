@@ -85,6 +85,21 @@
     <ClInclude Include="TitleScreenContentManager.h">
       <Filter>GenericFiles</Filter>
     </ClInclude>
+    <ClInclude Include="GameMatch.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentManager.h">
+      <Filter>GenericFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>GenericFiles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Publisher.cpp">
@@ -127,6 +142,21 @@
       <Filter>GenericFiles</Filter>
     </ClCompile>
     <ClCompile Include="TitleScreenContentManager.cpp" />
+    <ClCompile Include="GameMatch.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ContentManager.cpp">
+      <Filter>GenericFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>GenericFiles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="..\extern\SFML\bin\openal32.dll" />

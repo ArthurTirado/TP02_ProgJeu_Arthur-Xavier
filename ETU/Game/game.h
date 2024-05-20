@@ -13,6 +13,8 @@ public:
   static const unsigned int FRAME_RATE;
   static const unsigned int GAME_WIDTH;
   static const unsigned int GAME_HEIGHT;
+  static const float TIME_PER_FRAME;
+
 
 public:
   Game(std::string windowName);

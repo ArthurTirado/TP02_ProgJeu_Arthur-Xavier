@@ -21,7 +21,12 @@ TitleScene::~TitleScene()
 }
 SceneType TitleScene::update()
 {
+   if (passToGameMatch == true) {
+       return SceneType::GAME_MATCH;
+   }
   return getSceneType();
+ 
+
 }
 
 void TitleScene::draw(sf::RenderWindow& window) const
@@ -34,6 +39,7 @@ void TitleScene::draw(sf::RenderWindow& window) const
 
 bool TitleScene::init()
 {
+  passToGameMatch = false;
   if (!contentManager.loadContent())
     return false;
   menuImage.setTexture(contentManager.getBackgroundTexture());
@@ -75,14 +81,14 @@ bool TitleScene::handleEvents(sf::RenderWindow& window)
   while (window.pollEvent(event))
   {
     //x sur la fenêtre
-    if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-    {
-      window.close();
-      retval = true;
-    }
-    else if (event.type == sf::Event::KeyPressed) {
-        retval = true;
-    }
+      if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+      {
+          window.close();
+          retval = true;
+      }
+      else if (event.type == sf::Event::KeyPressed) {
+          passToGameMatch = true;
+      }
   }
   return retval;
 }
