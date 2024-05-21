@@ -12,7 +12,7 @@ const int Player::PLAYER_HP = 2000;
 const int Player::PLAYER_SPD = 500;
 const float Player::PLAYER_SCALE = 3.0f; 
 const float Player::CANNON_POSITION = 25.0f;
-const float Player::INVINCIBILITY_DURATION = 5.5f;
+const float Player::INVINCIBILITY_DURATION = 2;
 const float Player::GAME_MARGIN = 50;
 
 
@@ -57,9 +57,6 @@ bool Player::update(float deltaT, const Inputs& inputs)
 		sf::Color normalColor(255, 255, 255);
 		setColor(normalColor);
 	}
-
-	std::cout << invincibilityCountdown;
-	std::cout << "\n";
 	return AnimatedGameObject::update(deltaT, inputs);
 }
 

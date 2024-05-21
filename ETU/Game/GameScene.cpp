@@ -14,11 +14,13 @@ const float GameScene::KEYBOARD_SPEED = 0.01f;
 const float GameScene::TIME_PER_FRAME = 1.0f / (float)Game::FRAME_RATE;
 const int GameScene::NB_BULLETS_PLAYER = 200;
 const float GameScene::BULLET_RECOIL = 0.2f;
-const int GameScene::NB_ENEMIES = 10;
+const int GameScene::NB_ENEMIES = 17;
 const int GameScene::MIN_ENEMIES = 1;
 const float GameScene::ENEMY_SPAWN_RATE = 1.5f;
 const int GameScene::ENEMY_BULLET_DAMAGE = 100;
 const int GameScene::ENEMY_POINTS = 100;
+const int GameScene::BOSS_POINTS = 1000;
+
 
 
 
@@ -47,6 +49,9 @@ GameScene::~GameScene()
 }
 SceneType GameScene::update()
 {
+    if (passToLeaderboard) {
+        return SceneType::LEADERBBOARD;
+    }
     if (recoil > 0) {
         recoil -= TIME_PER_FRAME;
     }
@@ -61,6 +66,7 @@ SceneType GameScene::update()
         enemyCooldown = 0;
     }
     static int cptScrollBackground = 0;
+
     gameBackground.setTextureRect(sf::IntRect(0, (int)(SCROLL_SPEED * cptScrollBackground++), Game::GAME_WIDTH, Game::GAME_HEIGHT));
     SceneType retval = getSceneType();
     
@@ -95,6 +101,12 @@ SceneType GameScene::update()
                     break;
                 }
             }
+            if (bullet.getGlobalBounds().intersects(boss.getGlobalBounds()) && boss.isActive())
+            {
+                bullet.deactivate();
+                boss.hit(1);
+                break;
+            }
         }
     }
     for (PlayerBullet& bullet : enemyBullets)
@@ -122,6 +134,14 @@ SceneType GameScene::update()
             }
         }
     }
+    boss.update(TIME_PER_FRAME, inputs, player.getPosition().x);
+    if (player.getGlobalBounds().intersects(boss.getGlobalBounds()) && boss.isActive())
+    {
+        player.hit(player.getHealth());
+    }
+    if (points == NB_ENEMIES * ENEMY_POINTS) {
+        boss.activate();
+    }
     return getSceneType();
 }
 
@@ -141,6 +161,9 @@ void GameScene::draw(sf::RenderWindow& window) const
         enemy.draw(window);
     }
     hud.draw(window);
+    if (boss.isActive()) {
+        boss.draw(window);
+    }
 
 }
 
@@ -153,11 +176,6 @@ bool GameScene::init()
     gameBackgroundTexture.setRepeated(true);
     gameBackground.setTexture(gameBackgroundTexture);
     player.init(contentManager);
-    //Music
-    if (!gameMusic.openFromFile("Assets\\Music\\Title\\SgMusic.ogg"))
-        return false;
-    gameMusic.setLoop(true);
-    gameMusic.play();
     //hud
     hud.initialize(contentManager);
     //PlayerBullets
@@ -186,9 +204,14 @@ bool GameScene::init()
         newEnemy.init(contentManager);
         enemyPool.push_back(newEnemy);
     }
-
+   //Boss
+   boss.init(contentManager);
     Publisher::addSubscriber(*this, Event::ENEMY_SHOOT);
     Publisher::addSubscriber(*this, Event::ENEMY_KILLED);
+    Publisher::addSubscriber(*this, Event::BOSS_SHOOT);
+    Publisher::addSubscriber(*this, Event::BOSS_KILLED);
+
+
 
 
     return true;
@@ -289,6 +312,9 @@ Enemy& GameScene::getAvailableEnemy()
             return enemy;
         }
     }
+    Enemy newEnemy;
+    newEnemy.init(contentManager);
+    enemyPool.push_back(newEnemy);
     return enemyPool.front();
 }
 
@@ -303,16 +329,16 @@ void GameScene::spawnEnemy()
 }
 
 
-void GameScene::fireEnemyBullet(sf::Vector2f pos)
+void GameScene::fireEnemyBullet(sf::Vector2f pos, float bulletThreshold)
 {
     PlayerBullet& bullet1 = getAvailableBulletFromList(enemyBullets);
     bullet1.activate();
-    bullet1.setPosition(pos.x + Enemy::CANNON_POSITION, pos.y);
+    bullet1.setPosition(pos.x + bulletThreshold, pos.y);
     bullet1.setRotation(-90);  // Rotate the bullet 180 degrees
 
     PlayerBullet& bullet2 = getAvailableBulletFromList(enemyBullets);
     bullet2.activate();
-    bullet2.setPosition(pos.x - Enemy::CANNON_POSITION, pos.y);
+    bullet2.setPosition(pos.x - bulletThreshold, pos.y);
     bullet2.setRotation(-90);  // Rotate the bullet 180 degrees
 }
 
@@ -325,12 +351,29 @@ void GameScene::notify(Event event, const void* data)
     case Event::ENEMY_SHOOT:
     {
         const Enemy* shootingEnemy = static_cast<const Enemy*>(data);
-        fireEnemyBullet(shootingEnemy->getPosition());
+        fireEnemyBullet(shootingEnemy->getPosition(), Enemy::CANNON_POSITION);
+        break;
+    }
+    case Event::BOSS_SHOOT:
+    {
+        const Boss* shootingEnemy = static_cast<const Boss*>(data);
+        fireEnemyBullet(shootingEnemy->getPosition(), Boss::LASER);
         break;
     }
     case Event::ENEMY_KILLED: 
     {
         points += ENEMY_POINTS;
+        break;
+    }
+    case Event::GAME_OVER:
+    {
+        passToLeaderboard = true;
+        break;
+    }
+    case Event::BOSS_KILLED:
+    {
+        passToLeaderboard = true;
+        points += BOSS_POINTS;
         break;
     }
     default:

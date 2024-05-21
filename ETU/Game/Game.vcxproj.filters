@@ -41,6 +41,9 @@
     <Filter Include="GenericFiles\HUD">
       <UniqueIdentifier>{eaa47b6e-3ef2-4c7e-b847-d02e95269d66}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Characters\Boss">
+      <UniqueIdentifier>{4aa92f9c-2f8d-472b-b66c-fd6a4e38203a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h">
@@ -133,6 +136,9 @@
     <ClInclude Include="Hud.h">
       <Filter>GenericFiles\HUD</Filter>
     </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>Characters\Boss</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Publisher.cpp">
@@ -199,6 +205,9 @@
     </ClCompile>
     <ClCompile Include="Hud.cpp">
       <Filter>GenericFiles\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>Characters\Boss</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

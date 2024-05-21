@@ -7,14 +7,12 @@ class BossAnimation :
 public:
 	static const int ANIMATION_LENGTH_IN_SECONDS;
 	static const float CAN_SHOOT;
-	static const int NBS_OPENING_ANIMATION_FRAMES;
-	static const int NBS_SHOOTING_ANIMATION_FRAMES;
-	static const int NBS_TOTAL_ANIMATION_FRAMES;
+	static const float NBS_OPENING_ANIMATION_FRAMES;
+	static const float NBS_SHOOTING_ANIMATION_FRAMES;
+	static const float NBS_TOTAL_ANIMATION_FRAMES;
 public:
 	BossAnimation(sf::Sprite& s);
-	virtual void update(float deltaT, const Inputs& inputs) override;
 	virtual bool init(const ContentManager& contentManager) override;
-	bool canShoot();
 private:
 	sf::RectangleShape hitbox = sf::RectangleShape(sf::Vector2f(83, 176));
 	sf::IntRect opening1 = sf::IntRect(32, 1906, 83, 122);

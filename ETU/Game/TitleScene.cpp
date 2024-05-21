@@ -87,7 +87,6 @@ bool TitleScene::handleEvents(sf::RenderWindow& window)
             retval = true;
         }
         else if (event.type == sf::Event::KeyPressed) {
-            titleScreenMusic.stop();
             passToGameMatch = true;
         }
     }

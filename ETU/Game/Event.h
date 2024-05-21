@@ -7,5 +7,7 @@ enum class Event
   GUN_PICKED_UP,
   ENEMY_KILLED,
   ENEMY_SHOOT,
-  GAME_OVER
+  BOSS_SHOOT,
+  GAME_OVER,
+  BOSS_KILLED
 };

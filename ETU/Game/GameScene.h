@@ -8,6 +8,8 @@
 #include "Enemy.h"
 #include "Subscriber.h"
 #include "Hud.h"
+#include "Boss.h"
+
 
 
 class GameScene :
@@ -27,6 +29,8 @@ public:
     static const float ENEMY_SPAWN_RATE;
     static const int ENEMY_BULLET_DAMAGE;
     static const int ENEMY_POINTS;
+    static const int BOSS_POINTS;
+
 
 
 
@@ -43,7 +47,6 @@ public:
 private:
     sf::Texture gameBackgroundTexture;
     sf::Sprite gameBackground;
-    sf::Music gameMusic;
     ContentManager contentManager;
     bool passToLeaderboard;
     Inputs inputs;
@@ -62,7 +65,8 @@ private:
     virtual void notify(Event event, const void* data) override;
 
     std::list<PlayerBullet> enemyBullets;
-    void fireEnemyBullet(sf::Vector2f pos);
+    void fireEnemyBullet(sf::Vector2f pos, float bulletThreshold);
     int points;
     Hud hud;
+    Boss boss;
 };
