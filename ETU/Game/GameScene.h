@@ -7,7 +7,7 @@
 #include "PlayerBullet.h"
 #include "Enemy.h"
 #include "Subscriber.h"
-
+#include "Hud.h"
 
 
 class GameScene :
@@ -26,6 +26,8 @@ public:
     static const int MIN_ENEMIES;
     static const float ENEMY_SPAWN_RATE;
     static const int ENEMY_BULLET_DAMAGE;
+    static const int ENEMY_POINTS;
+
 
 
 
@@ -60,4 +62,7 @@ private:
     virtual void notify(Event event, const void* data) override;
 
     std::list<PlayerBullet> enemyBullets;
-    void fireEnemyBullet(sf::Vector2f pos);};
+    void fireEnemyBullet(sf::Vector2f pos);
+    int points;
+    Hud hud;
+};

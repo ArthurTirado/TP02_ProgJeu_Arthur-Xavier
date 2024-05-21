@@ -9,6 +9,8 @@ public:
     static const int PLAYER_SPD;
     static const float PLAYER_SCALE;
     static const float CANNON_POSITION;
+    static const float INVINCIBILITY_DURATION;
+    static const float GAME_MARGIN;
 
 public:
     Player();
@@ -19,6 +21,7 @@ public:
     int getHealth() const;
 private:
     int playerHP;
+    float invincibilityCountdown;
     sf::Sound shotSound;
     void stayInbounds();
 };

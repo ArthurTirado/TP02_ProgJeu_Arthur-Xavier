@@ -6,15 +6,19 @@
 #include "AnimatedGameObject.h"
 #include "game.h"
 #include "Publisher.h"
+#include <iostream>
 
 const int Player::PLAYER_HP = 2000;
 const int Player::PLAYER_SPD = 500;
 const float Player::PLAYER_SCALE = 3.0f; 
 const float Player::CANNON_POSITION = 25.0f;
+const float Player::INVINCIBILITY_DURATION = 5.5f;
+const float Player::GAME_MARGIN = 50;
 
 
 Player::Player()
 	: playerHP(PLAYER_HP)
+	,invincibilityCountdown(0)
 {
 
 }
@@ -28,7 +32,7 @@ bool Player::init(const ContentManager& contentManager)
 	setTextureRect(sf::IntRect(36, 87, 22, 27));
 	setScale(PLAYER_SCALE, PLAYER_SCALE); 
 	shotSound.setBuffer(contentManager.getPlayerGunSoundBuffer());
-
+	invincibilityCountdown = 0;
 	currentState = State::SHIP;
 
 	//ShipAnimation* shipAnimation = new ShipAnimation(*this);
@@ -42,6 +46,20 @@ bool Player::update(float deltaT, const Inputs& inputs)
 {
 	move(sf::Vector2f(inputs.moveFactorX * PLAYER_SPD, -inputs.moveFactorY * PLAYER_SPD));
 	stayInbounds();
+
+	if (invincibilityCountdown > 0) {
+		invincibilityCountdown -= deltaT;
+		sf::Color translucentColor = getColor();
+		translucentColor.a = 128;
+		setColor(translucentColor);
+	}
+	else {
+		sf::Color normalColor(255, 255, 255);
+		setColor(normalColor);
+	}
+
+	std::cout << invincibilityCountdown;
+	std::cout << "\n";
 	return AnimatedGameObject::update(deltaT, inputs);
 }
 
@@ -56,8 +74,8 @@ void Player::stayInbounds()
 		x = getGlobalBounds().width;
 	}
 
-	if (y > Game::GAME_HEIGHT - getGlobalBounds().height) {
-		y = Game::GAME_HEIGHT - getGlobalBounds().height;
+	if (y > Game::GAME_HEIGHT - getGlobalBounds().height - GAME_MARGIN) {
+		y = Game::GAME_HEIGHT - getGlobalBounds().height - GAME_MARGIN;
 	}
 	else if (y < 0 + getGlobalBounds().height) {
 		y = getGlobalBounds().height;
@@ -68,10 +86,16 @@ void Player::shoot()  {
 	shotSound.play();
 }
 void Player::hit(int hitPoints) {
-	playerHP -= hitPoints;
-	if (playerHP <= 0) {
-		Publisher::notifySubscribers(Event::GAME_OVER, this);
-		this->deactivate();
+	if (invincibilityCountdown <= 0) {
+		playerHP -= hitPoints;
+		if (playerHP <= 0) {
+			Publisher::notifySubscribers(Event::GAME_OVER, this);
+			this->deactivate();
+		}
+		invincibilityCountdown = INVINCIBILITY_DURATION;
 	}
+}
+int Player::getHealth() const{
+	return playerHP;
 }
 

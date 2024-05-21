@@ -18,6 +18,8 @@ const int GameScene::NB_ENEMIES = 10;
 const int GameScene::MIN_ENEMIES = 1;
 const float GameScene::ENEMY_SPAWN_RATE = 1.5f;
 const int GameScene::ENEMY_BULLET_DAMAGE = 100;
+const int GameScene::ENEMY_POINTS = 100;
+
 
 
 
@@ -34,6 +36,7 @@ GameScene::GameScene()
     , nbEnemies(0)
     , enemyCooldown(0)
     , passToLeaderboard(false)
+    ,points(0)
 {
 
 }
@@ -63,16 +66,10 @@ SceneType GameScene::update()
     
     player.update(TIME_PER_FRAME,inputs);
 
-    //bullet
-    
     if (inputs.fireBullet) {
         firePlayerBullet();
     }
-  /* for (PlayerBullet& p : playerBullets) {
-        if (p.update(TIME_PER_FRAME)) {
-            p.deactivate();
-        }
-    }*/
+
     for (PlayerBullet& e : enemyBullets) {
         if (e.update(TIME_PER_FRAME)) {
             e.deactivate();
@@ -81,11 +78,8 @@ SceneType GameScene::update()
     if ((enemyCooldown <= 0 && nbEnemies <= NB_ENEMIES) ||  nbEnemies < MIN_ENEMIES) {
         spawnEnemy();
     }
-    /*for (Enemy& enemy : enemyPool) {
-        if (enemy.update(TIME_PER_FRAME, inputs)) {
-            enemy.deactivate();
-        }
-    }*/
+    //hud
+    hud.update(points, player.getHealth(), 0);
     //bullet
     for (PlayerBullet& bullet : playerBullets)
     {
@@ -124,6 +118,7 @@ SceneType GameScene::update()
             if (player.getGlobalBounds().intersects(enemy.getGlobalBounds()) && enemy.isActive())
             {
                 enemy.hit(Enemy::ENEMY_HP);
+                player.hit(ENEMY_BULLET_DAMAGE);
             }
         }
     }
@@ -145,6 +140,7 @@ void GameScene::draw(sf::RenderWindow& window) const
     for (const Enemy& enemy : enemyPool) {
         enemy.draw(window);
     }
+    hud.draw(window);
 
 }
 
@@ -152,6 +148,7 @@ bool GameScene::init()
 {
     if (!contentManager.loadContent())
         return false;
+
     gameBackgroundTexture = contentManager.getBackgroundTexture();
     gameBackgroundTexture.setRepeated(true);
     gameBackground.setTexture(gameBackgroundTexture);
@@ -161,6 +158,8 @@ bool GameScene::init()
         return false;
     gameMusic.setLoop(true);
     gameMusic.play();
+    //hud
+    hud.initialize(contentManager);
     //PlayerBullets
     for (int i = 0; i < NB_BULLETS_PLAYER; i++)
     {
@@ -189,6 +188,8 @@ bool GameScene::init()
     }
 
     Publisher::addSubscriber(*this, Event::ENEMY_SHOOT);
+    Publisher::addSubscriber(*this, Event::ENEMY_KILLED);
+
 
     return true;
 }
@@ -228,14 +229,14 @@ bool GameScene::handleEvents(sf::RenderWindow& window)
         inputs.moveFactorX = inputs.moveFactorY = 0.0f;
 
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
             inputs.moveFactorX -= GameScene::KEYBOARD_SPEED;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
             inputs.moveFactorX += GameScene::KEYBOARD_SPEED;
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
             inputs.moveFactorY += GameScene::KEYBOARD_SPEED;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
             inputs.moveFactorY -= GameScene::KEYBOARD_SPEED;
 
 
@@ -327,7 +328,11 @@ void GameScene::notify(Event event, const void* data)
         fireEnemyBullet(shootingEnemy->getPosition());
         break;
     }
-    
+    case Event::ENEMY_KILLED: 
+    {
+        points += ENEMY_POINTS;
+        break;
+    }
     default:
         break;
     }
