@@ -19,6 +19,7 @@ const float Enemy::ENEMY_RECOIL = 0.05f;
 
 Enemy::Enemy()
 	: enemyHP(ENEMY_HP)
+	, recoil (ENEMY_HP)
 {
 }
 
@@ -34,6 +35,8 @@ bool Enemy::init(const ContentManager& contentManager)
 	setTexture(contentManager.getMainCharacterTexture());
 	setTextureRect(sf::IntRect(140, 0, 70, 32));
 	setScale(ENEMY_SCALE_X, ENEMY_SCALE_Y);
+	enemyGunSound.setBuffer(contentManager.getEnemyGunSoundBuffer());
+	enemyDeathSound.setBuffer(contentManager.getEnemyKilledSoundBuffer());
 	currentState = State::STANDARD_ENEMY;
 
 	bool retval = addAnimation<State::STANDARD_ENEMY, EnemyAnimation>(contentManager);
@@ -42,16 +45,30 @@ bool Enemy::init(const ContentManager& contentManager)
 
 bool Enemy::update(float deltaT, const Inputs& inputs)
 {
-	if (recoil > 0) {
-		recoil -= deltaT;
+	if (isActive()) {
+		if (recoil > 0) {
+			recoil -= deltaT;
+		}
+		move(sf::Vector2f(0, ENEMY_SPD));
+		if (getPosition().y >= Game::GAME_HEIGHT) {
+			setPosition(getPosition().x, 0);
+		}
+		if (animations[currentState]->getPercentage() > EnemyAnimation::CAN_SHOOT && recoil <= 0 && isActive()) {
+			Publisher::notifySubscribers(Event::ENEMY_SHOOT, this);
+			if (enemyGunSound.getStatus() == sf::Sound::Stopped) {
+				enemyGunSound.play();
+			}
+			recoil = ENEMY_RECOIL;
+		}
 	}
-	move(sf::Vector2f(0, ENEMY_SPD));
-	if (getPosition().y >= Game::GAME_HEIGHT) {
-		setPosition(getPosition().x, 0);
-	}
-	if (animations[currentState]->getPercentage() > EnemyAnimation::CAN_SHOOT && recoil <= 0) {
-		Publisher::notifySubscribers(Event::ENEMY_SHOOT, this);
-		recoil = ENEMY_RECOIL;
-	}
+
 	return AnimatedGameObject::update(deltaT, inputs);
+}
+void Enemy::hit(int hitPoints) {
+	enemyHP -= hitPoints;
+	if (enemyHP <= 0) {
+		Publisher::notifySubscribers(Event::ENEMY_KILLED, this);
+		this->deactivate();
+		enemyDeathSound.play();
+	}
 }

@@ -25,6 +25,7 @@ public:
     static const int NB_ENEMIES;
     static const int MIN_ENEMIES;
     static const float ENEMY_SPAWN_RATE;
+    static const int ENEMY_BULLET_DAMAGE;
 
 
 
@@ -41,7 +42,6 @@ private:
     sf::Texture gameBackgroundTexture;
     sf::Sprite gameBackground;
     sf::Music gameMusic;
-    sf::Sound enemyGunSound;
     ContentManager contentManager;
     bool passToLeaderboard;
     Inputs inputs;
@@ -55,7 +55,6 @@ private:
     std::list<Enemy> enemyPool;
     void spawnEnemy();
     Enemy& getAvailableEnemy();
-    Enemy testEnemy;
     float enemyCooldown;
     int nbEnemies;
     virtual void notify(Event event, const void* data) override;

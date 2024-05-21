@@ -5,8 +5,9 @@
 #include "ShipAnimation.h"
 #include "AnimatedGameObject.h"
 #include "game.h"
+#include "Publisher.h"
 
-const int Player::PLAYER_HP = 200;
+const int Player::PLAYER_HP = 2000;
 const int Player::PLAYER_SPD = 500;
 const float Player::PLAYER_SCALE = 3.0f; 
 const float Player::CANNON_POSITION = 25.0f;
@@ -65,5 +66,12 @@ void Player::stayInbounds()
 }
 void Player::shoot()  {
 	shotSound.play();
+}
+void Player::hit(int hitPoints) {
+	playerHP -= hitPoints;
+	if (playerHP <= 0) {
+		Publisher::notifySubscribers(Event::GAME_OVER, this);
+		this->deactivate();
+	}
 }
 

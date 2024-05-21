@@ -17,6 +17,7 @@ const float GameScene::BULLET_RECOIL = 0.2f;
 const int GameScene::NB_ENEMIES = 10;
 const int GameScene::MIN_ENEMIES = 1;
 const float GameScene::ENEMY_SPAWN_RATE = 1.5f;
+const int GameScene::ENEMY_BULLET_DAMAGE = 100;
 
 
 
@@ -67,11 +68,11 @@ SceneType GameScene::update()
     if (inputs.fireBullet) {
         firePlayerBullet();
     }
-    for (PlayerBullet& p : playerBullets) {
+  /* for (PlayerBullet& p : playerBullets) {
         if (p.update(TIME_PER_FRAME)) {
             p.deactivate();
         }
-    }
+    }*/
     for (PlayerBullet& e : enemyBullets) {
         if (e.update(TIME_PER_FRAME)) {
             e.deactivate();
@@ -80,21 +81,61 @@ SceneType GameScene::update()
     if ((enemyCooldown <= 0 && nbEnemies <= NB_ENEMIES) ||  nbEnemies < MIN_ENEMIES) {
         spawnEnemy();
     }
-    for (Enemy& enemy : enemyPool) {
+    /*for (Enemy& enemy : enemyPool) {
         if (enemy.update(TIME_PER_FRAME, inputs)) {
             enemy.deactivate();
         }
+    }*/
+    //bullet
+    for (PlayerBullet& bullet : playerBullets)
+    {
+        if (bullet.isActive()) {
+            if (bullet.update(TIME_PER_FRAME))
+                bullet.deactivate();
+            for (Enemy& enemy : enemyPool)
+            {
+                if (bullet.getGlobalBounds().intersects(enemy.getGlobalBounds()) && enemy.isActive())
+                {
+                    bullet.deactivate();
+                    enemy.hit(1);
+                    break;
+                }
+            }
+        }
     }
-    testEnemy.update(TIME_PER_FRAME, inputs);
+    for (PlayerBullet& bullet : enemyBullets)
+    {
+        if (bullet.isActive()) {
+            if (bullet.update(TIME_PER_FRAME))
+                bullet.deactivate();
+            if (bullet.getGlobalBounds().intersects(player.getGlobalBounds()) && player.isActive())
+            {
+                bullet.deactivate();
+                player.hit(ENEMY_BULLET_DAMAGE);
+                break;
+            }
+        }
+    }
+    for (Enemy& enemy : enemyPool)
+    {
 
+        if (enemy.isActive()) {
+            enemy.update(TIME_PER_FRAME, inputs);
+            if (player.getGlobalBounds().intersects(enemy.getGlobalBounds()) && enemy.isActive())
+            {
+                enemy.hit(Enemy::ENEMY_HP);
+            }
+        }
+    }
     return getSceneType();
 }
 
 void GameScene::draw(sf::RenderWindow& window) const
 {
     window.draw(gameBackground);
-    window.draw(player);
-    //window.draw(testEnemy);
+    if (player.isActive()) {
+          window.draw(player);
+    }
     for (const PlayerBullet& b : playerBullets) {
         b.draw(window);
     }
@@ -129,7 +170,6 @@ bool GameScene::init()
     }
 
     //EnemyBullets        
-    enemyGunSound.setBuffer(contentManager.getEnemyGunSoundBuffer());
     for (int i = 0; i < NB_BULLETS_PLAYER; i++)
     {
         PlayerBullet newBullet;
@@ -147,8 +187,6 @@ bool GameScene::init()
         newEnemy.init(contentManager);
         enemyPool.push_back(newEnemy);
     }
-    testEnemy.init(contentManager);
-    testEnemy.activate();
 
     Publisher::addSubscriber(*this, Event::ENEMY_SHOOT);
 
@@ -258,7 +296,7 @@ void GameScene::spawnEnemy()
     Enemy& enemy = getAvailableEnemy();
     enemy.activate();
     enemy.setPosition(Game::GAME_WIDTH/2, Game::GAME_HEIGHT/2);
-    enemy.setPosition(rand() % Game::GAME_WIDTH, 0);
+    enemy.setPosition(rand() % Game::GAME_WIDTH - enemy.getGlobalBounds().width, 0);
     nbEnemies++;
     enemyCooldown = ENEMY_SPAWN_RATE;
 }
@@ -287,9 +325,6 @@ void GameScene::notify(Event event, const void* data)
     {
         const Enemy* shootingEnemy = static_cast<const Enemy*>(data);
         fireEnemyBullet(shootingEnemy->getPosition());
-        if (enemyGunSound.getStatus() == sf::Sound::Stopped) {
-            enemyGunSound.play();
-        }
         break;
     }
     

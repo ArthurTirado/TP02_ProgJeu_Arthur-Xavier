@@ -15,6 +15,8 @@ public:
     virtual bool init(const ContentManager& contentManager) override;
     bool update(float deltaT, const Inputs& inputs) override;
     void shoot();
+    void hit(int hitPoints);
+    int getHealth() const;
 private:
     int playerHP;
     sf::Sound shotSound;

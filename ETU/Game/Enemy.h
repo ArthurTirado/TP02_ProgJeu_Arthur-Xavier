@@ -19,10 +19,13 @@ public:
     Enemy();
     Enemy(const Enemy& src);
     virtual bool init(const ContentManager& contentManager) override;
+    void hit(int hitPoints);
 
     bool update(float deltaT, const Inputs& inputs) override; 
 private:
     int enemyHP;
     float recoil;
+    sf::Sound enemyGunSound;
+    sf::Sound enemyDeathSound;
 };
 
