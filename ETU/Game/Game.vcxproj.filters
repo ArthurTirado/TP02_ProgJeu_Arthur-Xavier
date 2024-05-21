@@ -44,6 +44,12 @@
     <Filter Include="Characters\Boss">
       <UniqueIdentifier>{4aa92f9c-2f8d-472b-b66c-fd6a4e38203a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scenes\TitleScene">
+      <UniqueIdentifier>{3dd19c89-4dc3-485c-b4e7-704a70e4a010}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\Leaderboard">
+      <UniqueIdentifier>{83afeb2b-1616-49aa-b55b-a6a2e7e1a175}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h">
@@ -103,9 +109,6 @@
     <ClInclude Include="stdafx.h">
       <Filter>GenericFiles</Filter>
     </ClInclude>
-    <ClInclude Include="TitleScene.h">
-      <Filter>Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="TitleScreenContentManager.h">
       <Filter>GenericFiles</Filter>
     </ClInclude>
@@ -139,6 +142,12 @@
     <ClInclude Include="Boss.h">
       <Filter>Characters\Boss</Filter>
     </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>Scenes\TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="LeaderboardScene.h">
+      <Filter>Scenes\Leaderboard</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Publisher.cpp">
@@ -160,9 +169,6 @@
       <Filter>Animations</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="AnimatedGameObject.cpp">
@@ -208,6 +214,12 @@
     </ClCompile>
     <ClCompile Include="Boss.cpp">
       <Filter>Characters\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>Scenes\TitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="LeaderboardScene.cpp">
+      <Filter>Scenes\Leaderboard</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

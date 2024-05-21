@@ -4,6 +4,7 @@
 #include "TitleScene.h"
 #include "GameScene.h"
 #include "scenetype.h"
+#include "LeaderboardScene.h"
 
 const unsigned int Game::FRAME_RATE = 60;
 const unsigned int Game::GAME_WIDTH = 720;
@@ -146,6 +147,9 @@ Scene* Game::getNextScene(SceneType type) const
         break;
     case SceneType::GAME_MATCH:
         scene = new GameScene();
+        break;
+    case SceneType::LEADERBOARD:
+        scene = new LeaderboardScene();
         break;
     default:
         scene = nullptr;

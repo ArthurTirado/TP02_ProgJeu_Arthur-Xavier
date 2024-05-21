@@ -5,5 +5,6 @@ enum SceneType
 {
   NONE,
   TITLE_SCENE,
-  GAME_MATCH
+  GAME_MATCH,
+  LEADERBOARD
 };

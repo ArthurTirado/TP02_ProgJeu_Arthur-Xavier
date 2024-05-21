@@ -50,7 +50,7 @@ GameScene::~GameScene()
 SceneType GameScene::update()
 {
     if (passToLeaderboard) {
-        return SceneType::LEADERBBOARD;
+        return SceneType::LEADERBOARD;
     }
     if (recoil > 0) {
         recoil -= TIME_PER_FRAME;

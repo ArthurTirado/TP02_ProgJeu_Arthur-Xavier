@@ -19,13 +19,19 @@ public:
 public:
     Boss();
     virtual bool init(const ContentManager& contentManager) override;
-
     bool update(float deltaT, const Inputs& inputs, int playerPosX);
+    virtual void draw(sf::RenderWindow& window) const override;
+
     void hit(int hitPoints);
 private:
     int bossHP;
     float descendTimer;
     sf::Sound enemyGunSound;
     float recoil;
+    void updateHealthBar();
+
+
+    sf::RectangleShape healthBarBackground;
+    sf::RectangleShape healthBarForeground;
 };
 
