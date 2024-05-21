@@ -162,6 +162,7 @@
     <ClInclude Include="BossAnimation.h" />
     <ClInclude Include="ContentManager.h" />
     <ClInclude Include="CyclicAnimation.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyAnimation.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="game.h" />
@@ -191,6 +192,7 @@
     <ClCompile Include="BossAnimation.cpp" />
     <ClCompile Include="ContentManager.cpp" />
     <ClCompile Include="CyclicAnimation.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyAnimation.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GameObject.cpp" />

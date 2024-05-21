@@ -13,7 +13,7 @@ public:
 public:
 	EnemyAnimation(sf::Sprite& s);
 	bool canShoot();
-	virtual void update(float deltaT, const Inputs& inputs) override;
+	//virtual void update(float deltaT, const Inputs& inputs) override;
 	virtual bool init(const ContentManager& contentManager) override;
 private:
 	sf::RectangleShape hitbox = sf::RectangleShape(sf::Vector2f(63, 95));

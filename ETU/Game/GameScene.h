@@ -5,6 +5,8 @@
 #include "Inputs.h"
 #include "Player.h"
 #include "PlayerBullet.h"
+#include "Enemy.h"
+
 
 
 class GameScene :
@@ -19,6 +21,10 @@ public:
     static const float TIME_PER_FRAME;
     static const int NB_BULLETS_PLAYER;
     static const float BULLET_RECOIL;
+    static const int NB_ENEMIES;
+    static const int MIN_ENEMIES;
+    static const float ENEMY_SPAWN_RATE;
+
 
 
     // Héritées via Scene
@@ -43,5 +49,12 @@ private:
     std::list<PlayerBullet> playerBullets;
     void firePlayerBullet();
     PlayerBullet& getAvailablePlayerBullet();
+
+    std::list<Enemy> enemyPool;
+    void spawnEnemy();
+    Enemy& getAvailableEnemy();
+    Enemy testEnemy;
+    float enemyCooldown;
+    int nbEnemies;
 };
 

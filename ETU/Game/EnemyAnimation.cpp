@@ -12,12 +12,12 @@ EnemyAnimation::EnemyAnimation(sf::Sprite& s)
 {
 }
 
-void EnemyAnimation::update(float deltaT, const Inputs& inputs)
+/*void EnemyAnimation::update(float deltaT, const Inputs& inputs)
 {
 	//deltaT = deltaT / (ANIMATION_LENGTH_IN_SECONDS * NBS_TOTAL_ANIMATION_FRAMES);
 	//deltaT = deltaT * NBS_TOTAL_ANIMATION_FRAMES;
 	CyclicAnimation::update(deltaT, inputs);
-}
+}*/
 
 bool EnemyAnimation::canShoot() {
 	if (EnemyAnimation::getPercentage() >= CAN_SHOOT) {
@@ -30,28 +30,27 @@ bool EnemyAnimation::init(const ContentManager& contentManager)
 {
 	sf::Texture enemyTexture = contentManager.getEnemiesTexture();
 
-	lengthInSeconds = ANIMATION_LENGTH_IN_SECONDS;
 
 	hitbox.setSize(sf::Vector2f(63, 95));
 
-	frames.push_back(AnimationFrame::AnimationFrame(enemyTexture, opening1));
-	frames.push_back(AnimationFrame::AnimationFrame(enemyTexture, opening2));
-	frames.push_back(AnimationFrame::AnimationFrame(enemyTexture, opening3));
-	frames.push_back(AnimationFrame::AnimationFrame(enemyTexture, opening4));
-	frames.push_back(AnimationFrame::AnimationFrame(enemyTexture, opening5));
-	frames.push_back(AnimationFrame::AnimationFrame(enemyTexture, opening6));
-	frames.push_back(AnimationFrame::AnimationFrame(enemyTexture, opening7));
-	frames.push_back(AnimationFrame::AnimationFrame(enemyTexture, opening8));
-	frames.push_back(AnimationFrame::AnimationFrame(enemyTexture, opening9));
-	frames.push_back(AnimationFrame::AnimationFrame(enemyTexture, opening10));
-	frames.push_back(AnimationFrame::AnimationFrame(enemyTexture, opening11));
-	frames.push_back(AnimationFrame::AnimationFrame(enemyTexture, opening12));
-	frames.push_back(AnimationFrame::AnimationFrame(enemyTexture, opening13));
-	frames.push_back(AnimationFrame::AnimationFrame(enemyTexture, fire1));
-	frames.push_back(AnimationFrame::AnimationFrame(enemyTexture, fire2));
-	frames.push_back(AnimationFrame::AnimationFrame(enemyTexture, fire3));
-	frames.push_back(AnimationFrame::AnimationFrame(enemyTexture, fire4));
-	frames.push_back(AnimationFrame::AnimationFrame(enemyTexture, fire5));
+	frames.push_back(AnimationFrame::AnimationFrame(contentManager.getEnemiesTexture(), opening1));
+	frames.push_back(AnimationFrame::AnimationFrame(contentManager.getEnemiesTexture(), opening2));
+	frames.push_back(AnimationFrame::AnimationFrame(contentManager.getEnemiesTexture(), opening3));
+	frames.push_back(AnimationFrame::AnimationFrame(contentManager.getEnemiesTexture(), opening4));
+	frames.push_back(AnimationFrame::AnimationFrame(contentManager.getEnemiesTexture(), opening5));
+	frames.push_back(AnimationFrame::AnimationFrame(contentManager.getEnemiesTexture(), opening6));
+	frames.push_back(AnimationFrame::AnimationFrame(contentManager.getEnemiesTexture(), opening7));
+	frames.push_back(AnimationFrame::AnimationFrame(contentManager.getEnemiesTexture(), opening8));
+	frames.push_back(AnimationFrame::AnimationFrame(contentManager.getEnemiesTexture(), opening9));
+	frames.push_back(AnimationFrame::AnimationFrame(contentManager.getEnemiesTexture(), opening10));
+	frames.push_back(AnimationFrame::AnimationFrame(contentManager.getEnemiesTexture(), opening11));
+	frames.push_back(AnimationFrame::AnimationFrame(contentManager.getEnemiesTexture(), opening12));
+	frames.push_back(AnimationFrame::AnimationFrame(contentManager.getEnemiesTexture(), opening13));
+	frames.push_back(AnimationFrame::AnimationFrame(contentManager.getEnemiesTexture(), fire1));
+	frames.push_back(AnimationFrame::AnimationFrame(contentManager.getEnemiesTexture(), fire2));
+	frames.push_back(AnimationFrame::AnimationFrame(contentManager.getEnemiesTexture(), fire3));
+	frames.push_back(AnimationFrame::AnimationFrame(contentManager.getEnemiesTexture(), fire4));
+	frames.push_back(AnimationFrame::AnimationFrame(contentManager.getEnemiesTexture(), fire5));
 
 	return true;
 }

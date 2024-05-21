@@ -35,6 +35,12 @@
     <Filter Include="Projectiles\Player">
       <UniqueIdentifier>{1a5a7eeb-78f0-4c9c-a086-eb7588f6980f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Characters\Enemy">
+      <UniqueIdentifier>{8cb0364e-360d-471b-b1e8-0ab8203df951}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Characters\Player">
+      <UniqueIdentifier>{9b51e2a9-6116-4e89-aef0-668aa6bfecb4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h">
@@ -115,11 +121,14 @@
     <ClInclude Include="ShipAnimation.h">
       <Filter>Animations\Characters</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Characters</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerBullet.h">
       <Filter>Projectiles\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Characters\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Characters\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -176,11 +185,14 @@
     <ClCompile Include="ShipAnimation.cpp">
       <Filter>Animations\Characters</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Characters</Filter>
-    </ClCompile>
     <ClCompile Include="PlayerBullet.cpp">
       <Filter>Projectiles\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Characters\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Characters\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

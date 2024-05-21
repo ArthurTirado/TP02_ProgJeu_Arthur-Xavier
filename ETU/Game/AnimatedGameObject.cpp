@@ -18,8 +18,7 @@ AnimatedGameObject::~AnimatedGameObject()
 }
 AnimatedGameObject::AnimatedGameObject(const AnimatedGameObject& src)
   :GameObject(src)
-  , contentManager(src.contentManager)
-{
+  , contentManager(src.contentManager){
   
 }
 void AnimatedGameObject::draw(sf::RenderWindow& window) const

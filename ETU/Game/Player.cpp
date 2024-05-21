@@ -8,8 +8,8 @@
 
 const int Player::PLAYER_HP = 200;
 const int Player::PLAYER_SPD = 500;
-const float Player::PLAYER_SCALE = 4.0f; 
-const float Player::CANNON_POSITION = 30.0f;
+const float Player::PLAYER_SCALE = 3.0f; 
+const float Player::CANNON_POSITION = 25.0f;
 
 
 Player::Player()
