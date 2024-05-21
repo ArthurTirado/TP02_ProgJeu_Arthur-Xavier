@@ -1,23 +1,16 @@
 #include "stdafx.h"
 #include "EnemyAnimation.h"
 
-const int EnemyAnimation::ANIMATION_LENGTH_IN_SECONDS = 4;
-const int EnemyAnimation::NBS_OPENING_ANIMATION_FRAMES = 13;
-const int EnemyAnimation::NBS_SHOOTING_ANIMATION_FRAMES = 5;
-const int EnemyAnimation::NBS_TOTAL_ANIMATION_FRAMES = 18;
+const int EnemyAnimation::ANIMATION_LENGTH_IN_SECONDS = 2;
+const float EnemyAnimation::NBS_OPENING_ANIMATION_FRAMES = 13;
+const float EnemyAnimation::NBS_SHOOTING_ANIMATION_FRAMES = 5;
+const float EnemyAnimation::NBS_TOTAL_ANIMATION_FRAMES = 18;
 const float EnemyAnimation::CAN_SHOOT = NBS_OPENING_ANIMATION_FRAMES / NBS_TOTAL_ANIMATION_FRAMES;
 
 EnemyAnimation::EnemyAnimation(sf::Sprite& s)
 	: CyclicAnimation(s, ANIMATION_LENGTH_IN_SECONDS, true)
 {
 }
-
-/*void EnemyAnimation::update(float deltaT, const Inputs& inputs)
-{
-	//deltaT = deltaT / (ANIMATION_LENGTH_IN_SECONDS * NBS_TOTAL_ANIMATION_FRAMES);
-	//deltaT = deltaT * NBS_TOTAL_ANIMATION_FRAMES;
-	CyclicAnimation::update(deltaT, inputs);
-}*/
 
 bool EnemyAnimation::canShoot() {
 	if (EnemyAnimation::getPercentage() >= CAN_SHOOT) {

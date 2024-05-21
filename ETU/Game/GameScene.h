@@ -6,11 +6,12 @@
 #include "Player.h"
 #include "PlayerBullet.h"
 #include "Enemy.h"
+#include "Subscriber.h"
 
 
 
 class GameScene :
-    public Scene
+    public Scene, public Subscriber
 {
 public:
 
@@ -40,6 +41,7 @@ private:
     sf::Texture gameBackgroundTexture;
     sf::Sprite gameBackground;
     sf::Music gameMusic;
+    sf::Sound enemyGunSound;
     ContentManager contentManager;
     bool passToLeaderboard;
     Inputs inputs;
@@ -48,7 +50,7 @@ private:
 
     std::list<PlayerBullet> playerBullets;
     void firePlayerBullet();
-    PlayerBullet& getAvailablePlayerBullet();
+    PlayerBullet& getAvailableBulletFromList(std::list<PlayerBullet>& bulletList);
 
     std::list<Enemy> enemyPool;
     void spawnEnemy();
@@ -56,5 +58,7 @@ private:
     Enemy testEnemy;
     float enemyCooldown;
     int nbEnemies;
-};
+    virtual void notify(Event event, const void* data) override;
 
+    std::list<PlayerBullet> enemyBullets;
+    void fireEnemyBullet(sf::Vector2f pos);};

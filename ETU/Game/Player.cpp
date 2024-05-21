@@ -26,6 +26,8 @@ bool Player::init(const ContentManager& contentManager)
 	setTexture(contentManager.getMainCharacterTexture());
 	setTextureRect(sf::IntRect(36, 87, 22, 27));
 	setScale(PLAYER_SCALE, PLAYER_SCALE); 
+	shotSound.setBuffer(contentManager.getPlayerGunSoundBuffer());
+
 	currentState = State::SHIP;
 
 	//ShipAnimation* shipAnimation = new ShipAnimation(*this);
@@ -60,5 +62,8 @@ void Player::stayInbounds()
 		y = getGlobalBounds().height;
 	}
 	setPosition(x, y);
+}
+void Player::shoot()  {
+	shotSound.play();
 }
 

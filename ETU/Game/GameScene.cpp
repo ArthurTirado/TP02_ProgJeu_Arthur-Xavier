@@ -2,6 +2,8 @@
 #include "GameScene.h"
 #include <iostream>
 #include "game.h"
+#include "Publisher.h"
+
 
 #pragma region Constantes
 
@@ -13,7 +15,7 @@ const float GameScene::TIME_PER_FRAME = 1.0f / (float)Game::FRAME_RATE;
 const int GameScene::NB_BULLETS_PLAYER = 200;
 const float GameScene::BULLET_RECOIL = 0.2f;
 const int GameScene::NB_ENEMIES = 10;
-const int GameScene::MIN_ENEMIES = 3;
+const int GameScene::MIN_ENEMIES = 1;
 const float GameScene::ENEMY_SPAWN_RATE = 1.5f;
 
 
@@ -30,6 +32,7 @@ GameScene::GameScene()
     , recoil(0)
     , nbEnemies(0)
     , enemyCooldown(0)
+    , passToLeaderboard(false)
 {
 
 }
@@ -69,13 +72,15 @@ SceneType GameScene::update()
             p.deactivate();
         }
     }
-
-    if ((enemyCooldown <= 0 && nbEnemies <= NB_ENEMIES) || nbEnemies < MIN_ENEMIES) {
+    for (PlayerBullet& e : enemyBullets) {
+        if (e.update(TIME_PER_FRAME)) {
+            e.deactivate();
+        }
+    }
+    if ((enemyCooldown <= 0 && nbEnemies <= NB_ENEMIES) ||  nbEnemies < MIN_ENEMIES) {
         spawnEnemy();
     }
     for (Enemy& enemy : enemyPool) {
-        std::cout << enemy.getPosition().y;
-        std::cout << "\n";
         if (enemy.update(TIME_PER_FRAME, inputs)) {
             enemy.deactivate();
         }
@@ -91,6 +96,9 @@ void GameScene::draw(sf::RenderWindow& window) const
     window.draw(player);
     //window.draw(testEnemy);
     for (const PlayerBullet& b : playerBullets) {
+        b.draw(window);
+    }
+    for (const PlayerBullet& b : enemyBullets) {
         b.draw(window);
     }
     for (const Enemy& enemy : enemyPool) {
@@ -116,10 +124,19 @@ bool GameScene::init()
     for (int i = 0; i < NB_BULLETS_PLAYER; i++)
     {
         PlayerBullet newBullet;
-        newBullet.init(contentManager);
-        newBullet.setPosition(player.getPosition());
+        newBullet.init(contentManager, true);
         playerBullets.push_back(newBullet);
     }
+
+    //EnemyBullets        
+    enemyGunSound.setBuffer(contentManager.getEnemyGunSoundBuffer());
+    for (int i = 0; i < NB_BULLETS_PLAYER; i++)
+    {
+        PlayerBullet newBullet;
+        newBullet.init(contentManager, false);
+        enemyBullets.push_back(newBullet);
+    }
+
 
     //Enemy
     nbEnemies = 0;
@@ -133,6 +150,7 @@ bool GameScene::init()
     testEnemy.init(contentManager);
     testEnemy.activate();
 
+    Publisher::addSubscriber(*this, Event::ENEMY_SHOOT);
 
     return true;
 }
@@ -183,7 +201,7 @@ bool GameScene::handleEvents(sf::RenderWindow& window)
             inputs.moveFactorY -= GameScene::KEYBOARD_SPEED;
 
 
-        inputs.fireBullet = sf::Mouse::isButtonPressed(sf::Mouse::Left) && (recoil <= 0);
+        inputs.fireBullet = sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && (recoil <= 0);
     }
     return retval;
 }
@@ -195,9 +213,9 @@ float GameScene::handleControllerDeadZone(float analogInput)
     }
     return analogInput;
 }
-PlayerBullet& GameScene::getAvailablePlayerBullet()
+PlayerBullet& GameScene::getAvailableBulletFromList(std::list<PlayerBullet>& bulletList)
 {
-    for (PlayerBullet& b : playerBullets)
+    for (PlayerBullet& b : bulletList)
     {
         if (!b.isActive())
         {
@@ -205,18 +223,19 @@ PlayerBullet& GameScene::getAvailablePlayerBullet()
             return b;
         }
     }
-    return playerBullets.front();
+    return bulletList.front();
 }
 
 void GameScene::firePlayerBullet()
 {
     if (recoil == 0) {
-        PlayerBullet& bullet1 = getAvailablePlayerBullet();
+        PlayerBullet& bullet1 = getAvailableBulletFromList(playerBullets);
         bullet1.activate();
         bullet1.setPosition(player.getPosition().x + Player::CANNON_POSITION, player.getPosition().y);
-        PlayerBullet& bullet2 = getAvailablePlayerBullet();
+        PlayerBullet& bullet2 = getAvailableBulletFromList(playerBullets);
         bullet2.activate();
         bullet2.setPosition(player.getPosition().x - Player::CANNON_POSITION, player.getPosition().y);
+        player.shoot();
         recoil = BULLET_RECOIL;
     }
 }
@@ -242,4 +261,40 @@ void GameScene::spawnEnemy()
     enemy.setPosition(rand() % Game::GAME_WIDTH, 0);
     nbEnemies++;
     enemyCooldown = ENEMY_SPAWN_RATE;
+}
+
+
+void GameScene::fireEnemyBullet(sf::Vector2f pos)
+{
+    PlayerBullet& bullet1 = getAvailableBulletFromList(enemyBullets);
+    bullet1.activate();
+    bullet1.setPosition(pos.x + Enemy::CANNON_POSITION, pos.y);
+    bullet1.setRotation(-90);  // Rotate the bullet 180 degrees
+
+    PlayerBullet& bullet2 = getAvailableBulletFromList(enemyBullets);
+    bullet2.activate();
+    bullet2.setPosition(pos.x - Enemy::CANNON_POSITION, pos.y);
+    bullet2.setRotation(-90);  // Rotate the bullet 180 degrees
+}
+
+void GameScene::notify(Event event, const void* data)
+{
+    switch (event)
+    {
+    case Event::NONE:
+        break;
+    case Event::ENEMY_SHOOT:
+    {
+        const Enemy* shootingEnemy = static_cast<const Enemy*>(data);
+        fireEnemyBullet(shootingEnemy->getPosition());
+        if (enemyGunSound.getStatus() == sf::Sound::Stopped) {
+            enemyGunSound.play();
+        }
+        break;
+    }
+    
+    default:
+        break;
+    }
+
 }

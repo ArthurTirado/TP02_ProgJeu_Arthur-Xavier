@@ -7,9 +7,9 @@ class EnemyAnimation :
 public:
 	static const int ANIMATION_LENGTH_IN_SECONDS;
 	static const float CAN_SHOOT;
-	static const int NBS_OPENING_ANIMATION_FRAMES;
-	static const int NBS_SHOOTING_ANIMATION_FRAMES;
-	static const int NBS_TOTAL_ANIMATION_FRAMES;
+	static const float NBS_OPENING_ANIMATION_FRAMES;
+	static const float NBS_SHOOTING_ANIMATION_FRAMES;
+	static const float NBS_TOTAL_ANIMATION_FRAMES;
 public:
 	EnemyAnimation(sf::Sprite& s);
 	bool canShoot();

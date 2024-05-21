@@ -1,7 +1,7 @@
 ﻿  GameScene.cpp
-C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\TP02_ProgJeu_Arthur-Xavier\ETU\Game\GameScene.cpp(241,60): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\TP02_ProgJeu_Arthur-Xavier\ETU\Game\GameScene.cpp(241,39): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\TP02_ProgJeu_Arthur-Xavier\ETU\Game\GameScene.cpp(242,30): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\TP02_ProgJeu_Arthur-Xavier\ETU\Game\GameScene.cpp(260,60): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\TP02_ProgJeu_Arthur-Xavier\ETU\Game\GameScene.cpp(260,39): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\TP02_ProgJeu_Arthur-Xavier\ETU\Game\GameScene.cpp(261,30): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
   Game.vcxproj -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\TP02_ProgJeu_Arthur-Xavier\ETU\Debug\Game.lib
   C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\TP02_ProgJeu_Arthur-Xavier\ETU\Game\Assets\Fonts\Level01\emulogic.ttf -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\TP02_ProgJeu_Arthur-Xavier\ETU\Debug\Assets\Fonts\Level01\emulogic.ttf
   C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\TP02_ProgJeu_Arthur-Xavier\ETU\Game\Assets\Music\Title\SgMusic.ogg -> C:\Users\Tecnistico\Documents\Cegep\ProgJeu\TP\TP02\TP02_ProgJeu_Arthur-Xavier\ETU\Debug\Assets\Music\Title\SgMusic.ogg

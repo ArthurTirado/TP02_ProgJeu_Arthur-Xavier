@@ -10,6 +10,7 @@ const float PlayerBullet::TIME_TO_LIVE = 2000;
 PlayerBullet::PlayerBullet(const sf::Vector2f& initialPosition, const sf::Vector2f& initialThrust)
 	: GameObject()
 	, activationTime(0)
+	, isPlayer(true)
 {
 	setPosition(initialPosition);
 	move(initialThrust);
@@ -18,7 +19,6 @@ PlayerBullet::PlayerBullet(const sf::Vector2f& initialPosition, const sf::Vector
 PlayerBullet::PlayerBullet(const PlayerBullet& src)
 	:GameObject(src)
 {
-	sound = src.sound;
 	sprite = src.sprite;
 }
 
@@ -49,10 +49,15 @@ bool PlayerBullet::update(float elapsedTime)
 
 }
 
-bool PlayerBullet::init(const ContentManager& contentManager){
-	sound.setBuffer(contentManager.getPlayerGunSoundBuffer());
+bool PlayerBullet::init(const ContentManager& contentManager, bool isPlayerBullet){
+	isPlayer = isPlayerBullet;
 	setTexture(contentManager.getMainCharacterTexture());
-	setTextureRect(playerBullet);
+	if (isPlayer) {
+		setTextureRect(playerBullet);
+	}
+	else {
+		setTextureRect(enemyBullet);
+	}
 	setScale(Player::PLAYER_SCALE, Player::PLAYER_SCALE);
 	setRotation(90.0f);
 
@@ -63,5 +68,8 @@ void PlayerBullet::activate()
 {
 	GameObject::activate();
 	activationTime = 0;
-	sound.play();
+}
+
+bool PlayerBullet::isPlayerBullet() const {
+	return isPlayer;
 }

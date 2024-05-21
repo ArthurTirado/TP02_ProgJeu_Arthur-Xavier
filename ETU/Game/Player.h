@@ -13,10 +13,11 @@ public:
 public:
     Player();
     virtual bool init(const ContentManager& contentManager) override;
-
     bool update(float deltaT, const Inputs& inputs) override;
+    void shoot();
 private:
     int playerHP;
+    sf::Sound shotSound;
     void stayInbounds();
 };
 
